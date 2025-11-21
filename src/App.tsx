@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { useTheme } from '@heroui/use-theme';
 
 import IndexPage from '@/pages/index';
 import DocsPage from '@/pages/docs';
@@ -7,6 +8,8 @@ import BlogPage from '@/pages/blog';
 import AboutPage from '@/pages/about';
 
 function App() {
+  useTheme('dark');
+
   return (
     <Routes>
       <Route element={<IndexPage />} path="/" />
