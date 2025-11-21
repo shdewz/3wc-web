@@ -92,16 +92,6 @@ export default defineConfig([
     files: ['**/*.ts', '**/*.tsx'],
 
     rules: {
-      'prettier/prettier': [
-        'warn',
-        {
-          singleQuote: true,
-          semi: true,
-          trailingComma: 'es5',
-          tabWidth: 2,
-        },
-      ],
-
       'no-console': 'warn',
       'react/prop-types': 'off',
       'react/jsx-uses-react': 'off',
