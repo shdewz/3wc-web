@@ -10,7 +10,12 @@ export const Footer = () => {
         <Link className="text-xs font-bold" color="foreground" href="/">
           Privacy Policy
         </Link>
-        <Link className="text-xs font-bold" color="foreground" href="/">
+        <Link
+          isExternal
+          className="text-xs font-bold"
+          color="foreground"
+          href="https://github.com/shdewz/3wc-web"
+        >
           Source Code
         </Link>
       </div>
