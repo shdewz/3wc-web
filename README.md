@@ -1,4 +1,4 @@
-# 3WC web
+# 3WC Web
 
 The website serving the 3 Digit World Cup.
 
