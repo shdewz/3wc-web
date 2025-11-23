@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  Navbar,
+  Navbar as HeroUINavbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
@@ -11,30 +11,30 @@ import {
   Button,
 } from '@heroui/react';
 
-export const FullNavbar = () => {
+import { siteConfig } from '../config/site.ts';
+
+import { Logo } from './icons.tsx';
+
+const Brand = () => {
+  return (
+    <NavbarBrand>
+      <Link color="foreground" href="/">
+        <Logo />
+        <p className="font-bold text-inherit">3WC</p>
+      </Link>
+    </NavbarBrand>
+  );
+};
+
+export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = [
-    {
-      label: 'Home',
-      url: '/',
-    },
-    {
-      label: 'Information',
-      url: '/information',
-    },
-    {
-      label: 'Rules',
-      url: '/rules',
-    },
-    {
-      label: 'Schedules',
-      url: '/schedules',
-    },
-  ];
-
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <HeroUINavbar
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+    >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -42,19 +42,15 @@ export const FullNavbar = () => {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
-        <NavbarBrand>
-          <p className="font-bold text-inherit">3WC</p>
-        </NavbarBrand>
+        <Brand />
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarBrand>
-          <p className="font-bold text-inherit">3WC</p>
-        </NavbarBrand>
+        <Brand />
 
-        {menuItems.map((item, index) => (
+        {siteConfig.navItems.map((item, index) => (
           <NavbarItem key={`${item.label}-${index}`}>
-            <Link color="foreground" href={item.url}>
+            <Link color="foreground" href={item.href}>
               {item.label}
             </Link>
           </NavbarItem>
@@ -70,12 +66,12 @@ export const FullNavbar = () => {
       </NavbarContent>
 
       <NavbarMenu>
-        {menuItems.map((item, index) => (
+        {siteConfig.navItems.map((item, index) => (
           <NavbarMenuItem key={`${item.label}-${index}`}>
             <Link
               className="w-full"
               color="foreground"
-              href={item.url}
+              href={item.href}
               size="lg"
             >
               {item.label}
@@ -83,6 +79,6 @@ export const FullNavbar = () => {
           </NavbarMenuItem>
         ))}
       </NavbarMenu>
-    </Navbar>
+    </HeroUINavbar>
   );
 };
