@@ -2,8 +2,6 @@
 
 The website serving the 3 Digit World Cup.
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/vite-template)
-
 ## Prerequisites
 
 - Node `>=24.1.0`
