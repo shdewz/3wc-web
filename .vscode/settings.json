@@ -7,5 +7,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
   },
-  "eslint.run": "onSave"
+  "eslint.run": "onSave",
+  "files.eol": "\n"
 }
