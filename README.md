@@ -1,50 +1,34 @@
-# Vite & HeroUI Template
+# 3WC web
 
-This is a template for creating applications using Vite and HeroUI (v2).
+The website serving the 3 Digit World Cup.
 
 [Try it on CodeSandbox](https://githubbox.com/heroui-inc/vite-template)
 
-## Technologies Used
+## Prerequisites
 
-- [Vite](https://vitejs.dev/guide/)
-- [HeroUI](https://heroui.com)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Framer Motion](https://www.framer.com/motion)
+- Node `>=24.1.0`
+- pnpm
 
-## How to Use
+## Development
 
 To clone the project, run the following command:
 
 ```bash
-git clone https://github.com/heroui-inc/vite-template.git
+git clone https://github.com/shdewz/3wc-web.git
 ```
 
 ### Install dependencies
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
 ```bash
-npm install
+pnpm install
 ```
 
 ### Run the development server
 
 ```bash
-npm run dev
+pnpm dev
 ```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
 
 ## License
 
-Licensed under the [MIT license](https://github.com/heroui-inc/vite-template/blob/main/LICENSE).
+Licensed under the [Apache 2.0 License](/LICENSE). See the license file for more information.
