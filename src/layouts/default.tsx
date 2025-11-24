@@ -1,5 +1,4 @@
-import { Footer } from '../components/footer.tsx';
-
+import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 
 export const DefaultLayout = ({ children }: { children: React.ReactNode }) => {

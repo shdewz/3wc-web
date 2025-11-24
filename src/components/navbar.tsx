@@ -11,9 +11,8 @@ import {
   Button,
 } from '@heroui/react';
 
-import { siteConfig } from '../config/site.ts';
-
-import { Logo } from './icons.tsx';
+import { siteConfig } from '@/config/site';
+import { Logo } from '@/components/icons';
 
 const Brand = () => {
   return (
