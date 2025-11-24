@@ -61,7 +61,7 @@ export const MarkdownText = ({
 
         ul: ({ children }) => (
           <ul
-            className="list-disc ml-6 mb-2 text-base
+            className="list-disc ml-8 mb-2 text-base
                       [&_ul]:text-sm [&_ul]:ml-4 [&_ul]:text-default-600 [&_ul]:mb-1
                       [&_ol]:text-sm [&_ol]:ml-4 [&_ol]:text-default-600 [&_ol]:mb-1"
           >
@@ -71,7 +71,7 @@ export const MarkdownText = ({
 
         ol: ({ children }) => (
           <ol
-            className="list-decimal ml-6 mb-2 text-base
+            className="list-decimal ml-8 mb-2 text-base
                       [&_ul]:text-sm [&_ul]:ml-4 [&_ul]:text-default-600 [&_ul]:mb-1
                       [&_ol]:text-sm [&_ol]:ml-4 [&_ol]:text-default-600 [&_ol]:mb-1"
           >
