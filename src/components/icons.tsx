@@ -1,4 +1,10 @@
 import { FC } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faMagnifyingGlass,
+  faSquareMinus,
+  faSquarePlus,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { IconSvgProps } from '@/types';
 
@@ -18,3 +24,7 @@ export const Logo: FC<IconSvgProps> = ({ size = 36, height, ...props }) => (
     />
   </svg>
 );
+
+export const SearchIcon = () => <FontAwesomeIcon icon={faMagnifyingGlass} />;
+export const ExpandAllIcon = () => <FontAwesomeIcon icon={faSquarePlus} />;
+export const CollapseAllIcon = () => <FontAwesomeIcon icon={faSquareMinus} />;
