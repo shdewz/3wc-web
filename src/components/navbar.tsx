@@ -57,7 +57,7 @@ export const Navbar = () => {
         ))}
       </NavbarContent>
 
-      <NavbarContent justify="end">
+      <NavbarContent className="hidden sm:flex" justify="end">
         <NavbarItem>
           <Button as={Link} color="success" href="/login" variant="flat">
             Log In
