@@ -1,18 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import { useTheme } from '@heroui/use-theme';
 
-import IndexPage from '@/pages/index';
-import PricingPage from '@/pages/pricing';
+import { IndexPage } from '@/pages/index';
+import { InfoPage } from '@/pages/information';
 
-function App() {
+export const App = () => {
   useTheme('dark');
 
   return (
     <Routes>
       <Route element={<IndexPage />} path="/" />
-      <Route element={<PricingPage />} path="/pricing" />
+      <Route element={<InfoPage />} path="/information" />
     </Routes>
   );
-}
-
-export default App;
+};

@@ -9,7 +9,7 @@ declare module '@react-types/shared' {
   }
 }
 
-export function Provider({ children }: { children: React.ReactNode }) {
+export const Provider = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
 
   return (
@@ -17,4 +17,4 @@ export function Provider({ children }: { children: React.ReactNode }) {
       {children}
     </HeroUIProvider>
   );
-}
+};

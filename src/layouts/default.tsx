@@ -2,11 +2,7 @@ import { Footer } from '../components/footer.tsx';
 
 import { Navbar } from '@/components/navbar';
 
-export default function DefaultLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="relative flex flex-col h-screen">
       <Navbar />
@@ -16,4 +12,4 @@ export default function DefaultLayout({
       <Footer />
     </div>
   );
-}
+};
