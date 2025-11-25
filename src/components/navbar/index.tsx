@@ -1,29 +1,16 @@
 import { useState } from 'react';
 import {
   Navbar as HeroUINavbar,
-  NavbarBrand,
   NavbarContent,
   NavbarItem,
   NavbarMenuToggle,
-  NavbarMenu,
-  NavbarMenuItem,
   Link,
-  Button,
 } from '@heroui/react';
 
+import { NavbarMenu } from '@/components/navbar/navbar-menu';
 import { siteConfig } from '@/config/site';
-import { Logo } from '@/components/icons';
-
-const Brand = () => {
-  return (
-    <NavbarBrand>
-      <Link color="foreground" href="/">
-        <Logo />
-        <p className="font-bold text-inherit">3WC</p>
-      </Link>
-    </NavbarBrand>
-  );
-};
+import { Brand } from '@/components/common/brand';
+import { NavbarAvatar } from '@/components/navbar/navbar-avatar';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,27 +44,10 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex" justify="end">
-        <NavbarItem>
-          <Button as={Link} color="success" href="/login" variant="flat">
-            Log In
-          </Button>
-        </NavbarItem>
+        <NavbarAvatar />
       </NavbarContent>
 
-      <NavbarMenu>
-        {siteConfig.navItems.map((item, index) => (
-          <NavbarMenuItem key={`${item.label}-${index}`}>
-            <Link
-              className="w-full"
-              color="foreground"
-              href={item.href}
-              size="lg"
-            >
-              {item.label}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-      </NavbarMenu>
+      <NavbarMenu />
     </HeroUINavbar>
   );
 };
