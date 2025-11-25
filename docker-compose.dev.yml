@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   3wc-web-dev:
     build:
