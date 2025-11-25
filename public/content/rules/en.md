@@ -1,6 +1,6 @@
 ---
 language: en
-last_update: 2025-11-24T19:00:00Z
+last_update: 2025-11-25T19:00:00Z
 ---
 
 # Rules
