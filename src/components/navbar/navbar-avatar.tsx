@@ -6,6 +6,8 @@ import {
   DropdownTrigger,
 } from '@heroui/react';
 
+import { LogOutIcon, UserSettingsIcon } from '@/components/icons';
+
 export const NavbarAvatar = () => {
   return (
     <Dropdown placement="bottom-end">
@@ -22,11 +24,18 @@ export const NavbarAvatar = () => {
       </DropdownTrigger>
       <DropdownMenu aria-label="Profile Actions" variant="flat">
         <DropdownItem key="profile" className="h-14 gap-2">
-          <p className="text-default-600 italic">Signed in as</p>
+          <p className="text-default-600 italic text-xs">Signed in as</p>
           <p className="font-semibold">Unknown</p>
         </DropdownItem>
-        <DropdownItem key="settings">Settings</DropdownItem>
-        <DropdownItem key="logout" color="danger">
+        <DropdownItem key="settings" startContent={<UserSettingsIcon />}>
+          Settings
+        </DropdownItem>
+        <DropdownItem
+          key="logout"
+          className="text-danger"
+          color="danger"
+          startContent={<LogOutIcon />}
+        >
           Log Out
         </DropdownItem>
       </DropdownMenu>
