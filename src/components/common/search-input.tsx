@@ -11,7 +11,6 @@ export const SearchInput = ({
   return (
     <Input
       aria-label="Search"
-      className="sm:max-w-xs"
       classNames={{
         inputWrapper: 'bg-default-100',
         input: 'text-sm',
