@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { Card, Accordion, AccordionItem, Button } from '@heroui/react';
+import { Card, Accordion, AccordionItem, Button, Link } from '@heroui/react';
 
 import { ExpandAllIcon, CollapseAllIcon } from '@/components/icons';
 import { DefaultLayout } from '@/layouts/default';
@@ -17,10 +17,10 @@ export const RulesPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const lang = 'en';
+  const url = `/content/rules/${lang}.md`;
   const debouncedQuery = useDebouncedValue(searchQuery, 100);
 
   useEffect(() => {
-    const url = `/content/rules/${lang}.md`;
     const controller = new AbortController();
 
     const loadMarkdown = async () => {
@@ -109,9 +109,9 @@ export const RulesPage = () => {
             </p>
           )}
 
-          <Card className="p-3 mt-6 w-full flex flex-col gap-3">
+          <Card className="p-3 mt-6 w-full flex flex-col gap-3 items-center">
             {sections.length > 0 && (
-              <div className="flex justify-start sm:justify-between w-full flex-col sm:flex-row">
+              <div className="flex justify-start sm:justify-between w-full flex-col sm:flex-row gap-3">
                 <SearchInput onChange={handleSearch} />
                 <ToggleAllButton />
               </div>
@@ -138,6 +138,15 @@ export const RulesPage = () => {
                 ))}
               </Accordion>
             )}
+            <Link
+              isExternal
+              showAnchorIcon
+              className="w-fit text-default-600 text-xs"
+              href={`https://github.com/shdewz/3wc-web/tree/main/public${url}`}
+              size="sm"
+            >
+              View source
+            </Link>
           </Card>
         </div>
       </section>
