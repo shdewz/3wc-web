@@ -22,7 +22,7 @@ The tournament organisers reserve the right to modify the rules at any moment as
    - Exclusion of specific players for an entire match.
    - Declaring the match as forfeited, or as a win by default for the other team.
    - Disqualification from the entire tournament.
-   - Disqualification from the current and future official tournaments, until appealed.
+   - Disqualification from the current and future tournaments in the series, until appealed.
 
 ## 3. Tournament rules
 
