@@ -10,6 +10,7 @@ services:
       - VIRTUAL_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_EMAIL=${EMAIL}
+      - LETSENCRYPT_DNS=cloudflare
     networks:
       - nginx-proxy
     restart: unless-stopped
