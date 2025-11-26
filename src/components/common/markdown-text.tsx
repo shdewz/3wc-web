@@ -15,7 +15,7 @@ export const MarkdownText = ({
   const highlightChildren = (children: React.ReactNode) => {
     const q = searchQuery?.trim();
 
-    if (!q) return children;
+    if (!q || q.length < 3) return children;
 
     const safe = escapeRegExp(q);
     const regex = new RegExp(`(${safe})`, 'gi');
@@ -27,7 +27,10 @@ export const MarkdownText = ({
 
       return parts.map((part, i) =>
         regex.test(part) ? (
-          <mark key={i} className="bg-primary px-1 rounded">
+          <mark
+            key={i}
+            className="bg-primary text-primary-900 px-2 rounded font-bold tracking-tighter"
+          >
             {part}
           </mark>
         ) : (
@@ -61,7 +64,7 @@ export const MarkdownText = ({
 
         ul: ({ children }) => (
           <ul
-            className="list-disc ml-10 mb-2 text-base
+            className="list-disc marker:text-default-600 ml-10 mb-2 text-base
                       [&_ul]:text-sm [&_ul]:ml-4 [&_ul]:text-default-600 [&_ul]:mb-1
                       [&_ol]:text-sm [&_ol]:ml-4 [&_ol]:text-default-600 [&_ol]:mb-1"
           >
@@ -84,7 +87,10 @@ export const MarkdownText = ({
         ),
 
         a: ({ children, href }) => (
-          <Link className="hover:underline break-words" href={href}>
+          <Link
+            className="hover:underline break-words text-secondary"
+            href={href}
+          >
             {highlightChildren(children)}
           </Link>
         ),
