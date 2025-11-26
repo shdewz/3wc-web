@@ -18,7 +18,7 @@ export const RulesPage = () => {
 
   const lang = 'en';
   const url = `/content/rules/${lang}.md`;
-  const debouncedQuery = useDebouncedValue(searchQuery, 100);
+  const debouncedQuery = useDebouncedValue(searchQuery, 20);
 
   useEffect(() => {
     const controller = new AbortController();
