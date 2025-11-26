@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { Card, Accordion, AccordionItem, Button, Link } from '@heroui/react';
+import { useMediaQuery } from 'react-responsive';
 
 import { ExpandAllIcon, CollapseAllIcon } from '@/components/icons';
 import { DefaultLayout } from '@/layouts/default';
@@ -74,20 +75,23 @@ export const RulesPage = () => {
   };
 
   const ToggleAllButton = () => {
+    const isSmUp = useMediaQuery({ query: '(min-width: 40rem)' });
+    const allSelected = selectedKeys.size === sections.length;
+    const icon = allSelected ? <CollapseAllIcon /> : <ExpandAllIcon />;
+
     return (
       <Button
-        className="text-default-700 w-fit"
-        endContent={
-          selectedKeys.size === sections.length ? (
-            <CollapseAllIcon />
-          ) : (
-            <ExpandAllIcon />
-          )
-        }
-        variant="light"
+        className="text-default-700 w-fit sm:w-36"
+        endContent={isSmUp && icon}
+        isIconOnly={!isSmUp}
+        variant={isSmUp ? 'light' : 'flat'}
         onPress={handleToggleAll}
       >
-        {selectedKeys.size === sections.length ? 'Collapse all' : 'Expand all'}
+        {isSmUp ? (
+          <span>{allSelected ? 'Collapse all' : 'Expand all'}</span>
+        ) : (
+          icon
+        )}
       </Button>
     );
   };
@@ -111,7 +115,7 @@ export const RulesPage = () => {
 
           <Card className="p-3 mt-6 w-full flex flex-col gap-3 items-center">
             {sections.length > 0 && (
-              <div className="flex justify-start sm:justify-between w-full flex-col sm:flex-row gap-3">
+              <div className="flex justify-between w-full gap-3">
                 <SearchInput onChange={handleSearch} />
                 <ToggleAllButton />
               </div>
