@@ -12,7 +12,7 @@ export const SearchInput = ({
     <Input
       aria-label="Search"
       classNames={{
-        inputWrapper: 'bg-default-100',
+        inputWrapper: 'bg-default-50 focus-within:bg-default-200',
         input: 'text-sm',
       }}
       labelPlacement="outside"
