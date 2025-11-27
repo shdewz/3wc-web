@@ -1,6 +1,12 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { Card, Accordion, AccordionItem, Button, Link } from '@heroui/react';
-import { useMediaQuery } from 'react-responsive';
+import {
+  Card,
+  Accordion,
+  AccordionItem,
+  Button,
+  Link,
+  Tooltip,
+} from '@heroui/react';
 
 import { ExpandAllIcon, CollapseAllIcon } from '@/components/icons';
 import { DefaultLayout } from '@/layouts/default';
@@ -75,24 +81,23 @@ export const RulesPage = () => {
   };
 
   const ToggleAllButton = () => {
-    const isSmUp = useMediaQuery({ query: '(min-width: 40rem)' });
     const allSelected = selectedKeys.size === sections.length;
-    const icon = allSelected ? <CollapseAllIcon /> : <ExpandAllIcon />;
 
     return (
-      <Button
-        className="text-default-700 w-fit sm:w-36"
-        endContent={isSmUp && icon}
-        isIconOnly={!isSmUp}
-        variant={isSmUp ? 'light' : 'flat'}
-        onPress={handleToggleAll}
+      <Tooltip
+        showArrow
+        closeDelay={50}
+        content={allSelected ? 'Collapse all' : 'Expand all'}
       >
-        {isSmUp ? (
-          <span>{allSelected ? 'Collapse all' : 'Expand all'}</span>
-        ) : (
-          icon
-        )}
-      </Button>
+        <Button
+          isIconOnly
+          className="text-default-700 w-fit"
+          variant="faded"
+          onPress={handleToggleAll}
+        >
+          {allSelected ? <CollapseAllIcon /> : <ExpandAllIcon />}
+        </Button>
+      </Tooltip>
     );
   };
 
