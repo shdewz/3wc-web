@@ -24,9 +24,16 @@ export const SearchInput = ({
 
   const shortcutHint = (
     <div className="hidden lg:flex items-center gap-1 text-foreground-400">
-      {!isMac && <Kbd className="font-mono px-2">Ctrl</Kbd>}
+      {!isMac && (
+        <Kbd className="font-mono px-2 pointer-events-none select-none">
+          Ctrl
+        </Kbd>
+      )}
       {/* {isMac ? null : '+'} */}
-      <Kbd className="font-mono px-2" keys={isMac ? ['command'] : undefined}>
+      <Kbd
+        className="font-mono px-2 pointer-events-none select-none"
+        keys={isMac ? ['command'] : undefined}
+      >
         K
       </Kbd>
     </div>
@@ -37,7 +44,6 @@ export const SearchInput = ({
       ref={inputRef}
       aria-label="Search"
       classNames={{
-        inputWrapper: 'bg-default-50 focus-within:bg-default-200',
         input: 'text-sm',
       }}
       endContent={shortcutHint}
@@ -45,7 +51,7 @@ export const SearchInput = ({
       placeholder="Search..."
       startContent={<SearchIcon />}
       type="search"
-      variant="flat"
+      variant="faded"
       onChange={onChange}
     />
   );
