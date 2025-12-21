@@ -87,7 +87,10 @@ export const MarkdownText = ({
         ),
 
         a: ({ children, href }) => (
-          <Link className="hover:underline break-words text-focus" href={href}>
+          <Link
+            className="hover:underline break-words text-primary"
+            href={href}
+          >
             {highlightChildren(children)}
           </Link>
         ),
