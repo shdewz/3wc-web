@@ -1,6 +1,6 @@
 ---
 language: en
-last_update: 2025-11-25T19:00:00Z
+last_update: 2025-12-21T20:19:00Z
 ---
 
 # Rules
@@ -30,7 +30,7 @@ The tournament organisers reserve the right to modify the rules at any moment as
 2. The tournament begins with a qualifier stage, followed by a 16-team double-elimination bracket.
 3. Beatmap scoring is based on ScoreV2.
 4. The minimum size for a team is 3 players, and the maximum is 6.
-5. The mappool, matchups, and match schedules will be announced by the tournament organisers [on this site](/information), as well as on the spreadsheet, on the Sunday before the matches take place.
+5. The mappool, matchups, and match schedules will be announced by the tournament organisers on this site, as well as on the spreadsheet, on the Sunday before the matches take place.
    - These announcements may be delayed to ensure higher quality or to accommodate commentators for the mappool showcase. Any delays will be communicated clearly to all participants.
 6. Use of the Visual Settings to alter background dim or disable beatmap elements like storyboards and skins is allowed.
    - Custom skin elements must not be used to alter core gameplay elements or mechanics in unintended ways.
