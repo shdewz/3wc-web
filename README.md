@@ -4,6 +4,10 @@ The website serving the 3 Digit World Cup.
 
 ## Prerequisites
 
+- Docker
+
+If running locally via `pnpm dev:local`:
+
 - Node `>=24.1.0`
 - pnpm
 
@@ -15,16 +19,12 @@ To clone the project, run the following command:
 git clone https://github.com/shdewz/3wc-web.git
 ```
 
-### Install dependencies
-
-```bash
-pnpm install
-```
-
 ### Run the development server
 
 ```bash
 pnpm dev
+# or
+docker compose -f docker-compose.dev.yml up -d
 ```
 
 ## License
