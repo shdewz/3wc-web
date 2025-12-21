@@ -9,7 +9,6 @@ import {
 } from '@heroui/react';
 
 import { ExpandAllIcon, CollapseAllIcon } from '@/components/icons';
-import { DefaultLayout } from '@/layouts/default';
 import { title } from '@/components/primitives';
 import { MarkdownText } from '@/components/common/markdown-text';
 import { splitMarkdown, MarkdownSection } from '@/utils/split-markdown';
@@ -102,63 +101,61 @@ export const RulesPage = () => {
   };
 
   return (
-    <DefaultLayout>
-      <section className="flex flex-col items-left justify-center gap-4 py-8 md:py-10">
-        <div className="inline-block w-full text-left justify-center">
-          <h1 className={title()}>Rules</h1>
+    <section className="flex flex-col items-left justify-center gap-4 py-8 md:py-10">
+      <div className="inline-block w-full text-left justify-center">
+        <h1 className={title()}>Rules</h1>
 
-          {meta?.last_update && (
-            <p className="text-sm mt-1 text-default-500">
-              Last updated:{' '}
-              {new Date(meta.last_update).toLocaleDateString(undefined, {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </p>
+        {meta?.last_update && (
+          <p className="text-sm mt-1 text-default-500">
+            Last updated:{' '}
+            {new Date(meta.last_update).toLocaleDateString(undefined, {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </p>
+        )}
+
+        <Card className="p-3 mt-6 w-full flex flex-col gap-3 items-center">
+          {sections.length > 0 && (
+            <div className="flex justify-between w-full gap-3">
+              <SearchInput onChange={handleSearch} />
+              <ToggleAllButton />
+            </div>
           )}
-
-          <Card className="p-3 mt-6 w-full flex flex-col gap-3 items-center">
-            {sections.length > 0 && (
-              <div className="flex justify-between w-full gap-3">
-                <SearchInput onChange={handleSearch} />
-                <ToggleAllButton />
-              </div>
-            )}
-            {sections.length === 0 ? (
-              'Loading rules...'
-            ) : (
-              <Accordion
-                selectedKeys={selectedKeys}
-                selectionMode="multiple"
-                variant="shadow"
-                onSelectionChange={(keys) => {
-                  if (keys === 'all') return;
-                  setSelectedKeys(new Set([...keys].map(String)));
-                }}
-              >
-                {sections.map((section, index) => (
-                  <AccordionItem key={index} title={section.title}>
-                    <MarkdownText
-                      content={section.content}
-                      searchQuery={debouncedQuery}
-                    />
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            )}
-            <Link
-              isExternal
-              showAnchorIcon
-              className="w-fit text-default-600 text-xs"
-              href={`https://github.com/shdewz/3wc-web/tree/main/public${url}`}
-              size="sm"
+          {sections.length === 0 ? (
+            'Loading rules...'
+          ) : (
+            <Accordion
+              selectedKeys={selectedKeys}
+              selectionMode="multiple"
+              variant="shadow"
+              onSelectionChange={(keys) => {
+                if (keys === 'all') return;
+                setSelectedKeys(new Set([...keys].map(String)));
+              }}
             >
-              View source
-            </Link>
-          </Card>
-        </div>
-      </section>
-    </DefaultLayout>
+              {sections.map((section, index) => (
+                <AccordionItem key={index} title={section.title}>
+                  <MarkdownText
+                    content={section.content}
+                    searchQuery={debouncedQuery}
+                  />
+                </AccordionItem>
+              ))}
+            </Accordion>
+          )}
+          <Link
+            isExternal
+            showAnchorIcon
+            className="w-fit text-default-600 text-xs"
+            href={`https://github.com/shdewz/3wc-web/tree/main/public${url}`}
+            size="sm"
+          >
+            View source
+          </Link>
+        </Card>
+      </div>
+    </section>
   );
 };
