@@ -10,5 +10,8 @@ services:
       - .:/app
       - /app/node_modules
     environment:
-      - NODE_ENV=development
-    command: ['pnpm', 'run', 'dev', '--host']
+      NODE_ENV: development
+      CHOKIDAR_USEPOLLING: 'true'
+      CHOKIDAR_INTERVAL: '200'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'

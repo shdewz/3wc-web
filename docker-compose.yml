@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: 3wc-web
     environment:
+      - NODE_ENV=production
+
       - VIRTUAL_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_EMAIL=${EMAIL}
