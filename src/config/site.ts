@@ -9,16 +9,8 @@ export const siteConfig = {
       href: '/',
     },
     {
-      label: 'Information',
-      href: '/information',
-    },
-    {
       label: 'Rules',
       href: '/rules',
-    },
-    {
-      label: 'Schedules',
-      href: '/schedules',
     },
   ],
 };
