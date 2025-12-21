@@ -1,5 +1,4 @@
 import { IndexPage } from '@/pages/index';
-import { InfoPage } from '@/pages/information';
 import { RulesPage } from '@/pages/rules';
 
 interface RouteConfig {
@@ -18,11 +17,6 @@ export const routes: RouteConfig[] = [
     path: '/',
     page: <IndexPage />,
     title: 'Home',
-  },
-  {
-    path: '/information',
-    page: <InfoPage />,
-    title: 'Information',
   },
   {
     path: '/rules',
