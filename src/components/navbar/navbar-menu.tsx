@@ -19,17 +19,17 @@ export const NavbarMenu = () => {
   return (
     <HeroUINavbarMenu>
       {user ? (
-        <Card className="p-4 flex flex-row justify-between">
+        <Card className="p-4 flex flex-row gap-4">
           <Avatar
             isBordered
             showFallback
             className="transition-transform"
             color="default"
-            name="Unknown"
+            name={user?.username ?? undefined}
             size="md"
             src={user?.avatar_url}
           />
-          <div className="flex text-right items-center gap-3">
+          <div className="flex items-center justify-between grow">
             <div className="flex flex-col">
               <p className="text-default-600 italic text-xs">Signed in as</p>
               <p className="font-semibold">{user?.username ?? 'Unknown'}</p>

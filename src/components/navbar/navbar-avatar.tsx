@@ -20,7 +20,7 @@ export const NavbarAvatar = () => {
           showFallback
           className="transition-transform"
           color="default"
-          name="Unknown"
+          name={user?.username ?? undefined}
           size="md"
           src={user?.avatar_url}
         />
