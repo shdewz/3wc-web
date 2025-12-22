@@ -7,14 +7,13 @@ import {
   Link,
   Tooltip,
 } from '@heroui/react';
-
-import { ExpandAllIcon, CollapseAllIcon } from '@/components/icons';
-import { title } from '@/components/primitives';
-import { MarkdownText } from '@/components/common/markdown-text';
-import { splitMarkdown, MarkdownSection } from '@/utils/split-markdown';
-import { parseFrontMatter } from '@/utils/parse-front-matter';
-import { SearchInput } from '@/components/common/search-input';
-import { useDebouncedValue } from '@/hooks/use-debounced-value';
+import { useDebouncedValue } from '@hooks/use-debounced-value';
+import { ExpandAllIcon, CollapseAllIcon } from '@components/icons';
+import { title } from '@components/primitives';
+import { MarkdownText } from '@components/common/markdown-text';
+import { SearchInput } from '@components/common/search-input';
+import { splitMarkdown, MarkdownSection } from '@utils/split-markdown';
+import { parseFrontMatter } from '@utils/parse-front-matter';
 
 export const RulesPage = () => {
   const [sections, setSections] = useState<MarkdownSection[]>([]);

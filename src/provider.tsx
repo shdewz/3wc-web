@@ -1,5 +1,4 @@
 import type { NavigateOptions } from 'react-router-dom';
-
 import { HeroUIProvider } from '@heroui/system';
 import { useHref, useNavigate } from 'react-router-dom';
 import React, {
@@ -10,8 +9,7 @@ import React, {
   useState,
 } from 'react';
 import Cookies from 'js-cookie';
-
-import { FullScreenLoader } from '@/components/common/fullscreen-loader';
+import { FullScreenLoader } from '@components/common/fullscreen-loader';
 
 declare module '@react-types/shared' {
   interface RouterConfig {

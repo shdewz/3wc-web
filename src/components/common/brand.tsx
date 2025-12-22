@@ -1,6 +1,5 @@
 import { Link, NavbarBrand } from '@heroui/react';
-
-import { Logo } from '@/components/icons';
+import { Logo } from '@components/icons';
 
 export const Brand = () => {
   return (

@@ -6,13 +6,13 @@ import {
   NavbarMenuToggle,
   Link,
 } from '@heroui/react';
+import { siteConfig } from '@config/site';
+import { NavbarMenu } from '@components/navbar/navbar-menu';
+import { Brand } from '@components/common/brand';
+import { NavbarAvatar } from '@components/navbar/navbar-avatar';
+import { LoginButton } from '@components/navbar/navbar-login-button';
 
-import { NavbarMenu } from '@/components/navbar/navbar-menu';
-import { siteConfig } from '@/config/site';
-import { Brand } from '@/components/common/brand';
-import { NavbarAvatar } from '@/components/navbar/navbar-avatar';
 import { useAuth } from '@/provider';
-import { LoginButton } from '@/components/navbar/navbar-login-button';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

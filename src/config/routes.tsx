@@ -1,9 +1,10 @@
-import { IndexPage } from '@/pages/index';
-import { RulesPage } from '@/pages/rules';
+import { IndexPage } from '@pages/index';
+import { RegisterPage } from '@pages/register';
+import { RulesPage } from '@pages/rules';
 
 interface RouteConfig {
   path: string;
-  page: React.ReactNode;
+  page: React.ReactElement;
   title: string;
   permissions?: string[];
   parent?: {
@@ -22,5 +23,10 @@ export const routes: RouteConfig[] = [
     path: '/rules',
     page: <RulesPage />,
     title: 'Rules',
+  },
+  {
+    path: '/register',
+    page: <RegisterPage />,
+    title: 'Register',
   },
 ];

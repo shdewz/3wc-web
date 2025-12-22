@@ -5,8 +5,8 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from '@heroui/react';
+import { LogOutIcon } from '@components/icons';
 
-import { LogOutIcon, UserSettingsIcon } from '@/components/icons';
 import { useAuth } from '@/provider';
 
 export const NavbarAvatar = () => {
@@ -26,13 +26,17 @@ export const NavbarAvatar = () => {
         />
       </DropdownTrigger>
       <DropdownMenu aria-label="Profile Actions" variant="flat">
-        <DropdownItem key="profile" isReadOnly className="h-14 gap-2">
+        <DropdownItem
+          key="profile"
+          isReadOnly
+          className="h-14 gap-2 pointer-events-none"
+        >
           <p className="text-default-600 italic text-xs">Signed in as</p>
           <p className="font-semibold">{user?.username ?? 'Unknown'}</p>
         </DropdownItem>
-        <DropdownItem key="settings" startContent={<UserSettingsIcon />}>
+        {/* <DropdownItem key="settings" startContent={<UserSettingsIcon />}>
           Settings
-        </DropdownItem>
+        </DropdownItem> */}
         <DropdownItem
           key="logout"
           className="text-danger"
@@ -40,7 +44,7 @@ export const NavbarAvatar = () => {
           startContent={<LogOutIcon />}
           onClick={logout}
         >
-          Log Out
+          Log out
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>

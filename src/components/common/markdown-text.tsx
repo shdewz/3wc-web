@@ -2,8 +2,7 @@ import { Code, Link } from '@heroui/react';
 import { Children } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-
-import { escapeRegExp } from '@/utils/escape-regex';
+import { escapeRegExp } from '@utils/escape-regex';
 
 export const MarkdownText = ({
   content,
@@ -29,7 +28,7 @@ export const MarkdownText = ({
         regex.test(part) ? (
           <mark
             key={i}
-            className="bg-primary text-default-200 px-2 rounded font-bold tracking-tighter"
+            className="bg-primary text-default-50 px-1 rounded font-extrabold tracking-tight"
           >
             {part}
           </mark>

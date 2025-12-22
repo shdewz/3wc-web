@@ -7,11 +7,11 @@ import {
   Button,
   Avatar,
 } from '@heroui/react';
+import { siteConfig } from '@config/site';
+import { LoginButton } from '@components/navbar/navbar-login-button';
+import { LogOutIcon } from '@components/icons';
 
-import { siteConfig } from '@/config/site';
-import { LoginButton } from '@/components/navbar/navbar-login-button';
 import { useAuth } from '@/provider';
-import { LogOutIcon } from '@/components/icons';
 
 export const NavbarMenu = () => {
   const { user, logout } = useAuth();

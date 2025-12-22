@@ -1,9 +1,8 @@
 import { Input, Kbd } from '@heroui/react';
 import { ChangeEventHandler, useRef } from 'react';
-
-import { useDetectPlatform } from '@/hooks/use-detect-platform';
-import { useGlobalShortcut } from '@/hooks/use-global-shortcut';
-import { SearchIcon } from '@/components/icons';
+import { useDetectPlatform } from '@hooks/use-detect-platform';
+import { useGlobalShortcut } from '@hooks/use-global-shortcut';
+import { SearchIcon } from '@components/icons';
 
 export const SearchInput = ({
   onChange,
