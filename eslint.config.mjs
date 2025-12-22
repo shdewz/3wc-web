@@ -114,26 +114,9 @@ export default defineConfig([
       ],
 
       'import/order': [
-        'warn',
+        'error',
         {
-          groups: [
-            'type',
-            'builtin',
-            'object',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
-
-          pathGroups: [
-            {
-              pattern: '~/**',
-              group: 'external',
-              position: 'after',
-            },
-          ],
+          groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
 
           'newlines-between': 'always',
         },
