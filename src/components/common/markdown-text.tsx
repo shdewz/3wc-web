@@ -29,7 +29,7 @@ export const MarkdownText = ({
         regex.test(part) ? (
           <mark
             key={i}
-            className="bg-focus text-foreground px-2 rounded font-bold tracking-tighter"
+            className="bg-primary text-default-200 px-2 rounded font-bold tracking-tighter"
           >
             {part}
           </mark>
