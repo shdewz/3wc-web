@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { Route, Routes } from 'react-router-dom';
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import '@/styles/globals.css';
+import { routes } from '@config/routes';
+import { DefaultLayout } from '@layouts/default';
 
 import { Provider } from '@/provider';
-import { IndexPage } from '@/pages/index';
-import { RulesPage } from '@/pages/rules';
-import { DefaultLayout } from '@/layouts/default';
+import { RouteWithTitle } from '@/components/common/route-with-title';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -16,8 +14,15 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Provider>
         <DefaultLayout>
           <Routes>
-            <Route element={<IndexPage />} path="/" />
-            <Route element={<RulesPage />} path="/rules" />
+            {routes.map((route, i) => (
+              <Route
+                key={i}
+                element={
+                  <RouteWithTitle element={route.page} title={route.title} />
+                }
+                path={route.path}
+              />
+            ))}
           </Routes>
         </DefaultLayout>
       </Provider>
