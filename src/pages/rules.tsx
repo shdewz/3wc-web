@@ -100,7 +100,7 @@ export const RulesPage = () => {
   };
 
   return (
-    <section className="flex flex-col items-left justify-center gap-4 py-8 md:py-10">
+    <section className="flex flex-col items-left justify-center gap-4 sm:py-8">
       <div className="inline-block w-full text-left justify-center">
         <h1 className={title()}>Rules</h1>
 
