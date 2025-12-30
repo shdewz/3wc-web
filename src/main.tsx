@@ -7,6 +7,7 @@ import { DefaultLayout } from '@layouts/default';
 
 import { Provider } from '@/provider';
 import { RouteWithTitle } from '@/components/common/route-with-title';
+import { RequireAuth } from '@/components/auth/require-auth';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -14,15 +15,18 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Provider>
         <DefaultLayout>
           <Routes>
-            {routes.map((route, i) => (
-              <Route
-                key={i}
-                element={
-                  <RouteWithTitle element={route.page} title={route.title} />
-                }
-                path={route.path}
-              />
-            ))}
+            {routes.map((route, i) => {
+              const pageElement = (
+                <RouteWithTitle element={route.page} title={route.title} />
+              );
+              const element = route.requiresAuth ? (
+                <RequireAuth>{pageElement}</RequireAuth>
+              ) : (
+                pageElement
+              );
+
+              return <Route key={i} element={element} path={route.path} />;
+            })}
           </Routes>
         </DefaultLayout>
       </Provider>
