@@ -1,4 +1,6 @@
 import { title, subtitle } from '@components/primitives';
+import { Button } from '@heroui/button';
+import { Link } from '@heroui/react';
 
 export const IndexPage = () => {
   return (
@@ -7,7 +9,17 @@ export const IndexPage = () => {
         <span className={title()}>Get ready for </span>
         <span className={title({ color: 'green' })}>3WC&nbsp;2026</span>
         <br />
-        <div className={subtitle({ class: 'mt-4' })}>Coming January 3</div>
+        <div className={subtitle({ class: 'mt-4' })}>Coming January 11</div>
+        <br />
+        <Button
+          as={Link}
+          className="px-8 font-bold"
+          color="primary"
+          href="/register"
+          variant="shadow"
+        >
+          Register now!
+        </Button>
       </div>
     </section>
   );
