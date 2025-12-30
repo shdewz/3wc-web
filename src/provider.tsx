@@ -23,6 +23,13 @@ type User = {
   country_code: string;
   avatar_url?: string;
   roles: string[];
+  global_rank: number;
+  country_rank: number;
+  discord_id: string;
+  discord_username: string;
+  discord_avatar_url?: string;
+  registered: boolean;
+  wants_captain: boolean;
 };
 
 type AuthContextValue = {
@@ -114,7 +121,10 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
       await fetch('/api/auth/logout', {
         method: 'POST',
         credentials: 'include',
-        headers: { 'X-CSRF-Token': csrf },
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrf,
+        },
       });
     } catch {}
     await refresh();
