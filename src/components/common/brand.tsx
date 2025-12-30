@@ -4,7 +4,7 @@ import { Logo } from '@components/icons';
 export const Brand = () => {
   return (
     <NavbarBrand>
-      <Link color="foreground" href="/">
+      <Link className="flex gap-2" color="foreground" href="/">
         <Logo />
         <p className="font-bold text-inherit">3WC</p>
       </Link>
