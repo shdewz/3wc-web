@@ -5,12 +5,12 @@ export const siteConfig = {
   description: '',
   navItems: [
     {
-      label: 'Home',
-      href: '/',
-    },
-    {
       label: 'Rules',
       href: '/rules',
+    },
+    {
+      label: 'Register',
+      href: '/register',
     },
   ],
 };
