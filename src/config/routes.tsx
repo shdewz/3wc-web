@@ -2,10 +2,13 @@ import { IndexPage } from '@pages/index';
 import { RegisterPage } from '@pages/register';
 import { RulesPage } from '@pages/rules';
 
+import { RegisterSuccessPage } from '@/pages/register-success';
+
 interface RouteConfig {
   path: string;
   page: React.ReactElement;
   title: string;
+  requiresAuth?: boolean;
   permissions?: string[];
   parent?: {
     title: string;
@@ -28,5 +31,12 @@ export const routes: RouteConfig[] = [
     path: '/register',
     page: <RegisterPage />,
     title: 'Register',
+    requiresAuth: true,
+  },
+  {
+    path: '/register/success',
+    page: <RegisterSuccessPage />,
+    title: 'Registration successful',
+    requiresAuth: true,
   },
 ];
