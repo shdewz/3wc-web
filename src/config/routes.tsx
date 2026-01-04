@@ -1,8 +1,8 @@
 import { IndexPage } from '@pages/index';
 import { RegisterPage } from '@pages/register';
 import { RulesPage } from '@pages/rules';
-
-import { RegisterSuccessPage } from '@/pages/register-success';
+import { RegisterSuccessPage } from '@pages/register-success';
+import { RequireRegistrationOpen } from '@components/auth/require-registration-open';
 
 interface RouteConfig {
   path: string;
@@ -29,13 +29,21 @@ export const routes: RouteConfig[] = [
   },
   {
     path: '/register',
-    page: <RegisterPage />,
+    page: (
+      <RequireRegistrationOpen>
+        <RegisterPage />
+      </RequireRegistrationOpen>
+    ),
     title: 'Register',
     requiresAuth: true,
   },
   {
     path: '/register/success',
-    page: <RegisterSuccessPage />,
+    page: (
+      <RequireRegistrationOpen>
+        <RegisterSuccessPage />
+      </RequireRegistrationOpen>
+    ),
     title: 'Registration successful',
     requiresAuth: true,
   },
