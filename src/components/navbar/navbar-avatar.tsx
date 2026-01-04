@@ -18,7 +18,7 @@ export const NavbarAvatar = () => {
         <Avatar
           isBordered
           showFallback
-          className="transition-transform"
+          className="transition-transform cursor-pointer"
           color="default"
           name={user?.username ?? undefined}
           size="md"
