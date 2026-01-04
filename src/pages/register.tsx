@@ -53,7 +53,7 @@ export const RegisterPage = () => {
 
   const unregister = async () => {
     const csrf = Cookies.get('csrf_token') ?? '';
-    const resp = await fetch('/api/register/unregister', {
+    const resp = await fetch('/api/unregister', {
       method: 'POST',
       credentials: 'include',
       headers: {
