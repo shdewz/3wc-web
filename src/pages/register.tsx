@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 
 import { useAuth } from '@/provider';
 import { UserCard } from '@/components/common/user-card';
+import { ConfirmActionButton } from '@/components/common/confirm-button';
 
 export const RegisterPage = () => {
   const { user, refresh } = useAuth();
@@ -46,11 +47,32 @@ export const RegisterPage = () => {
 
       throw new Error(text);
     }
+
+    await refresh();
+  };
+
+  const unregister = async () => {
+    const csrf = Cookies.get('csrf_token') ?? '';
+    const resp = await fetch('/api/register/unregister', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrf,
+      },
+    });
+
+    if (!resp.ok) {
+      const text = await resp.text().catch(() => 'Unknown error');
+
+      throw new Error(text);
+    }
+
     await refresh();
   };
 
   return (
-    <section className="flex flex-col items-left justify-center gap-4 pb-8 sm:py-8 w-2xl">
+    <section className="flex flex-col items-start justify-center gap-4 pb-8 sm:py-8 max-w-2xl">
       <div className="inline-block w-full text-left justify-center">
         {user?.registered ? (
           <>
@@ -78,14 +100,25 @@ export const RegisterPage = () => {
               }}
               discordAction={
                 user?.discord_id ? (
-                  <Button
+                  <ConfirmActionButton
+                    color="default"
+                    confirmColor="danger"
+                    confirmText="Unlink"
+                    description={
+                      <>
+                        This will unlink your Discord account from your profile.
+                        <br />
+                        If you linked the wrong account, you can relink again
+                        with a different account.
+                      </>
+                    }
                     size="sm"
-                    type="button"
+                    title="Unlink Discord account?"
                     variant="flat"
-                    onPress={unlinkDiscord}
+                    onConfirm={unlinkDiscord}
                   >
                     Unlink
-                  </Button>
+                  </ConfirmActionButton>
                 ) : (
                   <Button
                     size="sm"
@@ -161,6 +194,27 @@ export const RegisterPage = () => {
             >
               {user?.registered ? 'Update registration' : 'Register!'}
             </Button>
+            {user?.registered && (
+              <ConfirmActionButton
+                className="w-full font-bold"
+                color="danger"
+                confirmColor="danger"
+                confirmText="Remove"
+                description={
+                  <>
+                    This will remove your registration for 3WC 2026.
+                    <br />
+                    You can re-register later by re-opening the registration
+                    page if the registration period is still open.
+                  </>
+                }
+                title="Remove registration?"
+                variant="flat"
+                onConfirm={unregister}
+              >
+                Remove registration
+              </ConfirmActionButton>
+            )}
           </form>
         </Card>
       </div>
