@@ -1,6 +1,5 @@
 import { title, subtitle } from '@components/primitives';
-import { Button } from '@heroui/button';
-import { Link } from 'react-router-dom';
+import { Button, Link } from '@heroui/react';
 
 import { useServerClockOffset } from '@/hooks/use-server-clock-offset';
 import {
