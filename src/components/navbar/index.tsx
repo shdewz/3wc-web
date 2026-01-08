@@ -11,8 +11,7 @@ import { NavbarMenu } from '@components/navbar/navbar-menu';
 import { Brand } from '@components/common/brand';
 import { NavbarAvatar } from '@components/navbar/navbar-avatar';
 import { LoginButton } from '@components/navbar/navbar-login-button';
-
-import { useAuth } from '@/provider';
+import { useAuth } from '@context/auth-context';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
