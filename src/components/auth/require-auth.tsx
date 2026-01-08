@@ -1,23 +1,22 @@
-import { useEffect } from 'react';
-import { FullScreenLoader } from '@components/common/fullscreen-loader';
+import React, { useEffect } from 'react';
 import { useAuth } from '@context/auth-context';
 
 export const RequireAuth: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { user, loading, login } = useAuth();
+  const { user, initializing, loading, login } = useAuth();
 
   useEffect(() => {
-    if (!loading && !user) {
+    if (!initializing && !loading && !user) {
       const rt = window.location.href;
 
       login(rt);
     }
-  }, [loading, user, login]);
+  }, [initializing, loading, user, login]);
 
-  if (loading || (!user && typeof window !== 'undefined')) {
-    return <FullScreenLoader />;
-  }
+  if (initializing || loading) return null;
+
+  if (!user) return null;
 
   return <>{children}</>;
 };
