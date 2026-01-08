@@ -28,7 +28,7 @@ export const MarkdownText = ({
         regex.test(part) ? (
           <mark
             key={i}
-            className="bg-primary text-default-50 px-1 rounded font-extrabold tracking-tight"
+            className="bg-primary text-default-50 px-1 rounded font-extrabold tracking-tighter"
           >
             {part}
           </mark>
