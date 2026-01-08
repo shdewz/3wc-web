@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 import { formatMonthDay } from '@utils/date-format';
 import { useTournamentStatus } from '@context/tournament-status-context';
 
+export type RegistrationWindowState = ReturnType<typeof useRegistrationWindow>;
+
 export const useRegistrationWindow = () => {
   const { initializing, loading, error, serverNow, statuses, refresh } =
     useTournamentStatus();
