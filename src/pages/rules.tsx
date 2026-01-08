@@ -89,8 +89,8 @@ export const RulesPage = () => {
       >
         <Button
           isIconOnly
-          className="text-default-700 w-fit"
-          variant="faded"
+          className="w-fit text-md"
+          variant="flat"
           onPress={handleToggleAll}
         >
           {allSelected ? <CollapseAllIcon /> : <ExpandAllIcon />}
@@ -100,7 +100,7 @@ export const RulesPage = () => {
   };
 
   return (
-    <section className="flex flex-col items-left justify-center gap-4 sm:py-8">
+    <section className="flex flex-col items-left justify-center gap-4 sm:py-8 w-full">
       <div className="inline-block w-full text-left justify-center">
         <h1 className={title()}>Rules</h1>
 
