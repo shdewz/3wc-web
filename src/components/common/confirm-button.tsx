@@ -46,7 +46,7 @@ export const ConfirmActionButton: React.FC<ConfirmActionButtonProps> = ({
 
   confirmText = 'Confirm',
   confirmColor = 'danger',
-  confirmVariant = 'solid',
+  confirmVariant = 'flat',
 
   onConfirm,
   onSuccess,
@@ -112,7 +112,7 @@ export const ConfirmActionButton: React.FC<ConfirmActionButtonProps> = ({
               <ModalFooter>
                 <Button
                   isDisabled={isSubmitting}
-                  variant="flat"
+                  variant="light"
                   onPress={onOpenChange}
                 >
                   Cancel
