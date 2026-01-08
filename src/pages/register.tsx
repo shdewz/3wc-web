@@ -107,8 +107,10 @@ export const RegisterPage = () => {
                       <>
                         This will unlink your Discord account from your profile.
                         <br />
-                        If you linked the wrong account, you can relink again
-                        with a different account.
+                        <span className="text-sm text-default-500">
+                          If you linked the wrong account, you can relink again
+                          with a different account.
+                        </span>
                       </>
                     }
                     size="sm"
@@ -203,8 +205,10 @@ export const RegisterPage = () => {
                   <>
                     This will remove your registration for 3WC 2026.
                     <br />
-                    You can re-register later by re-opening the registration
-                    page if the registration period is still open.
+                    <span className="text-sm text-default-500">
+                      You can re-register later by re-opening the registration
+                      page if the registration period is still open.
+                    </span>
                   </>
                 }
                 title="Remove registration?"
