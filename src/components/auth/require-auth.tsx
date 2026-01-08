@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { FullScreenLoader } from '@components/common/fullscreen-loader';
-
-import { useAuth } from '@/provider';
+import { useAuth } from '@context/auth-context';
 
 export const RequireAuth: React.FC<{ children: React.ReactNode }> = ({
   children,

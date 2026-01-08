@@ -1,7 +1,6 @@
 import { Button } from '@heroui/react';
 import { useState } from 'react';
-
-import { useAuth } from '@/provider';
+import { useAuth } from '@context/auth-context';
 
 export const LoginButton = () => {
   const { login } = useAuth();

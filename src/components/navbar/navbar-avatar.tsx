@@ -6,8 +6,7 @@ import {
   DropdownTrigger,
 } from '@heroui/react';
 import { LogOutIcon } from '@components/icons';
-
-import { useAuth } from '@/provider';
+import { useAuth } from '@context/auth-context';
 
 export const NavbarAvatar = () => {
   const { user, logout } = useAuth();

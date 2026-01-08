@@ -2,10 +2,9 @@ import { title } from '@components/primitives';
 import { Alert, Button, Card, Divider, Switch } from '@heroui/react';
 import { useState } from 'react';
 import Cookies from 'js-cookie';
-
-import { useAuth } from '@/provider';
-import { UserCard } from '@/components/common/user-card';
-import { ConfirmActionButton } from '@/components/common/confirm-button';
+import { UserCard } from '@components/common/user-card';
+import { ConfirmActionButton } from '@components/common/confirm-button';
+import { useAuth } from '@context/auth-context';
 
 export const RegisterPage = () => {
   const { user, refresh } = useAuth();

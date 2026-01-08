@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-
-import { siteConfig } from '@/config/site';
+import { siteConfig } from '@config/site';
 
 interface Props {
   title?: string;

@@ -10,8 +10,7 @@ import {
 import { siteConfig } from '@config/site';
 import { LoginButton } from '@components/navbar/navbar-login-button';
 import { LogOutIcon } from '@components/icons';
-
-import { useAuth } from '@/provider';
+import { useAuth } from '@context/auth-context';
 
 export const NavbarMenu = () => {
   const { user, logout } = useAuth();

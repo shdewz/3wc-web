@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react';
 import { Card, Divider, Avatar, Chip } from '@heroui/react';
-
-import { Flag } from '@/components/common/flag';
-import { DiscordIcon } from '@/components/icons';
+import { Flag } from '@components/common/flag';
+import { DiscordIcon } from '@components/icons';
 
 type OsuInfo = {
   user_id?: string | number | null;

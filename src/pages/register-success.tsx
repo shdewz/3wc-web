@@ -1,9 +1,8 @@
 import { Card, Button, Link as HeroUILink } from '@heroui/react';
 import { title } from '@components/primitives';
 import { Link } from 'react-router-dom';
-
-import { useAuth } from '@/provider';
-import { UserCard } from '@/components/common/user-card';
+import { UserCard } from '@components/common/user-card';
+import { useAuth } from '@context/auth-context';
 
 export const RegisterSuccessPage = () => {
   const { user } = useAuth();
