@@ -1,22 +1,12 @@
 import { title, subtitle } from '@components/primitives';
 import { Button, Link } from '@heroui/react';
-
-import { useServerClockOffset } from '@/hooks/use-server-clock-offset';
-import {
-  isRegistrationOpenAt,
-  nowWithOffset,
-  registrationWindow,
-} from '@/utils/registration';
-import { formatMonthDay } from '@/utils/date-format';
+import { useRegistrationWindow } from '@hooks/use-registration-window';
 
 export const IndexPage = () => {
-  const { offsetMs } = useServerClockOffset();
+  const { initializing, loading, error, open, upcoming, closed, startLabel } =
+    useRegistrationWindow();
 
-  const now = offsetMs === null ? null : nowWithOffset(offsetMs);
-  const open = now !== null && isRegistrationOpenAt(now);
-  const upcoming = now !== null && now < registrationWindow.start;
-
-  const startLabel = registrationWindow.start;
+  const showChecking = initializing || loading;
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 h-full md:py-10">
@@ -26,15 +16,14 @@ export const IndexPage = () => {
         <br />
 
         <div className={subtitle({ class: 'mt-4' })}>
-          {offsetMs === null && <>Checking tournament status...</>}
-          {offsetMs !== null && upcoming && (
-            <>Coming {formatMonthDay(startLabel)}</>
-          )}
-          {offsetMs !== null && !open && !upcoming && <>Registrations closed</>}
+          {showChecking && <>...</>}
+          {!showChecking && error && <>Could not load status</>}
+          {!showChecking && !error && upcoming && <>Coming {startLabel}</>}
+          {!showChecking && !error && closed && <>Registrations closed</>}
         </div>
 
         <br />
-        {open && (
+        {!showChecking && !error && open && (
           <Button
             as={Link}
             className="px-8 font-bold"
