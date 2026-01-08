@@ -11,9 +11,32 @@ import { siteConfig } from '@config/site';
 import { LoginButton } from '@components/navbar/navbar-login-button';
 import { LogOutIcon } from '@components/icons';
 import { useAuth } from '@context/auth-context';
+import { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRegistrationWindow } from '@hooks/use-registration-window';
 
-export const NavbarMenu = () => {
+type NavbarMenuProps = {
+  onClose: () => void;
+};
+
+export const NavbarMenu: React.FC<NavbarMenuProps> = ({ onClose }) => {
   const { user, logout } = useAuth();
+  const state = useRegistrationWindow();
+  const navigate = useNavigate();
+
+  const navItems = useMemo(() => {
+    return siteConfig.navMenuItems.filter((item) => {
+      if (!item.visibleWhen) return true;
+      if (state.initializing || state.loading) return false;
+
+      return item.visibleWhen(state);
+    });
+  }, [state.initializing, state.loading, state.open]);
+
+  const handleNavigate = (href: string) => {
+    onClose();
+    navigate(href);
+  };
 
   return (
     <HeroUINavbarMenu>
@@ -42,13 +65,13 @@ export const NavbarMenu = () => {
         <LoginButton />
       )}
       <Divider />
-      {siteConfig.navItems.map((item, index) => (
+      {navItems.map((item, index) => (
         <NavbarMenuItem key={`${item.label}-${index}`}>
           <Link
             className="w-full"
             color="foreground"
-            href={item.href}
             size="lg"
+            onPress={() => handleNavigate(item.href)}
           >
             {item.label}
           </Link>

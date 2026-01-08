@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -12,16 +12,36 @@ import { Brand } from '@components/common/brand';
 import { NavbarAvatar } from '@components/navbar/navbar-avatar';
 import { LoginButton } from '@components/navbar/navbar-login-button';
 import { useAuth } from '@context/auth-context';
+import { useRegistrationWindow } from '@hooks/use-registration-window';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user } = useAuth();
 
+  const state = useRegistrationWindow();
+
+  const navItems = useMemo(() => {
+    return siteConfig.navItems.filter((item) => {
+      if (!item.visibleWhen) return true;
+      if (state.initializing || state.loading) return false;
+
+      return item.visibleWhen(state);
+    });
+  }, [state.initializing, state.loading, state.open]);
+
+  const onMenuOpenChange = useCallback((open: boolean) => {
+    setIsMenuOpen(open);
+  }, []);
+
+  const handleCloseMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
+
   return (
     <HeroUINavbar
       isBordered
       isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
+      onMenuOpenChange={onMenuOpenChange}
     >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle
@@ -36,7 +56,7 @@ export const Navbar = () => {
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <Brand />
 
-        {siteConfig.navItems.map((item, index) => (
+        {navItems.map((item, index) => (
           <NavbarItem key={`${item.label}-${index}`}>
             <Link color="foreground" href={item.href}>
               {item.label}
@@ -49,7 +69,7 @@ export const Navbar = () => {
         {user?.user_id ? <NavbarAvatar /> : <LoginButton />}
       </NavbarContent>
 
-      <NavbarMenu />
+      <NavbarMenu onClose={handleCloseMenu} />
     </HeroUINavbar>
   );
 };
