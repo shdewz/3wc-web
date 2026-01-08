@@ -1,6 +1,4 @@
 import type { NavigateOptions } from 'react-router-dom';
-import { HeroUIProvider } from '@heroui/system';
-import { useHref, useNavigate } from 'react-router-dom';
 import React, {
   createContext,
   useCallback,
@@ -9,7 +7,6 @@ import React, {
   useState,
 } from 'react';
 import Cookies from 'js-cookie';
-import { FullScreenLoader } from '@components/common/fullscreen-loader';
 
 declare module '@react-types/shared' {
   interface RouterConfig {
@@ -34,6 +31,7 @@ type User = {
 
 type AuthContextValue = {
   user: User | null;
+  initializing: boolean;
   loading: boolean;
   error: string | null;
   refresh: () => Promise<void>;
@@ -47,18 +45,14 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 export const useAuth = () => {
   const ctx = useContext(AuthContext);
 
-  if (!ctx) throw new Error('useAuth must be used within Provider');
+  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
 
   return ctx;
 };
 
-export const Provider: React.FC<{ children: React.ReactNode }> = ({
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
-}: {
-  children: React.ReactNode;
 }) => {
-  const navigate = useNavigate();
-
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [initializing, setInitializing] = useState(true);
@@ -99,7 +93,7 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
       setInitializing(false);
     })();
 
-    const onFocus = () => refresh();
+    const onFocus = () => void refresh();
 
     window.addEventListener('focus', onFocus);
 
@@ -121,10 +115,7 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
       await fetch('/api/auth/logout', {
         method: 'POST',
         credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': csrf,
-        },
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrf },
       });
     } catch {}
     await refresh();
@@ -134,12 +125,19 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
   const hasRole = (role: string) => !!user?.roles?.includes(role);
 
   return (
-    <HeroUIProvider locale="en-GB" navigate={navigate} useHref={useHref}>
-      <AuthContext.Provider
-        value={{ user, loading, error, refresh, login, logout, hasRole }}
-      >
-        {initializing ? <FullScreenLoader /> : children}
-      </AuthContext.Provider>
-    </HeroUIProvider>
+    <AuthContext.Provider
+      value={{
+        user,
+        initializing,
+        loading,
+        error,
+        refresh,
+        login,
+        logout,
+        hasRole,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
   );
 };
