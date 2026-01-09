@@ -1,6 +1,6 @@
 ---
 language: en
-last_update: 2026-01-09T16:00:00Z
+last_update: 2026-01-09T20:00:00Z
 ---
 
 # Rules
@@ -151,7 +151,6 @@ The tournament organisers reserve the right to modify the rules at any moment as
 3. All bracket stages will be held between Saturday 00:00 and Sunday 20:00 UTC.
    - Other times may be available upon request. Consult with the tournament organisers for more information.
 4. Match scheduling will be handled by the tournament organisers. Schedules will be released on the Sunday before the week the matches are to be played. The tournament organisers will try to create the schedule to respect the participants' time zones.
-   - In the Quarterfinals and subsequent stages, team captains may inform the tournament organisers if they expect a specific time slot to be unavailable in the following week.
 5. Reschedules will only be considered if both teams agree to a time and communicate it to the tournament organisers, before Thursday 23:59 UTC of the week the match is to take place.
    - Late reschedules will not be allowed.
 6. Captains are chiefly responsible for their team's availability, and will be held accountable for any mismanagement in this regard. Captains that do not observe deadlines, act in bad faith when rescheduling matches, or similar offenses, are subject to sanctions outlined under rule 2.4.
