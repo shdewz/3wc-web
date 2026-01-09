@@ -92,12 +92,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       await refresh();
       setInitializing(false);
     })();
-
-    const onFocus = () => void refresh();
-
-    window.addEventListener('focus', onFocus);
-
-    return () => window.removeEventListener('focus', onFocus);
   }, [refresh]);
 
   const login = (returnTo?: string) => {

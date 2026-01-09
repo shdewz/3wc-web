@@ -64,12 +64,6 @@ export function TournamentStatusProvider({
       await fetchStatuses();
       setInitializing(false);
     })();
-
-    const onFocus = () => void fetchStatuses();
-
-    window.addEventListener('focus', onFocus);
-
-    return () => window.removeEventListener('focus', onFocus);
   }, []);
 
   return (
