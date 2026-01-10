@@ -12,7 +12,8 @@ export const RequireRegistrationOpen: React.FC<Props> = ({
   children,
   redirectTo = '/',
 }) => {
-  const { initializing, loading, error, open } = useRegistrationWindow();
+  const { initializing, loading, error, open, msUntilStart } =
+    useRegistrationWindow();
   const location = useLocation();
 
   if (initializing || loading) return null;
@@ -35,6 +36,8 @@ export const RequireRegistrationOpen: React.FC<Props> = ({
   }
 
   if (!open) {
+    const upcoming = msUntilStart ?? 0 > 0;
+
     return (
       <Navigate
         replace
@@ -43,8 +46,9 @@ export const RequireRegistrationOpen: React.FC<Props> = ({
           toast: {
             color: 'warning',
             title: 'Registration is closed',
-            description:
-              'The registration period has passed and no new registrations will be accepted.',
+            description: upcoming
+              ? 'The registration period has not started yet.'
+              : 'The registration period has passed and no new registrations will be accepted.',
           },
         }}
         to={redirectTo}
