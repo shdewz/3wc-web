@@ -4,6 +4,8 @@ import { HeroUIProvider } from '@heroui/system';
 import { LoadingGate } from '@components/common/loading-gate';
 import { AuthProvider } from '@context/auth-context';
 import { TournamentStatusProvider } from '@context/tournament-status-context';
+import { ToastProvider } from '@heroui/react';
+import { RouteToast } from '@components/common/route-toast';
 
 declare module '@react-types/shared' {
   interface RouterConfig {
@@ -18,6 +20,9 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <HeroUIProvider locale="en-GB" navigate={navigate} useHref={useHref}>
+      <ToastProvider />
+      <RouteToast />
+
       <TournamentStatusProvider>
         <AuthProvider>
           <LoadingGate>{children}</LoadingGate>

@@ -18,11 +18,38 @@ export const RequireRegistrationOpen: React.FC<Props> = ({
   if (initializing || loading) return null;
 
   if (error) {
-    return <Navigate replace state={{ from: location }} to={redirectTo} />;
+    return (
+      <Navigate
+        replace
+        state={{
+          from: location,
+          toast: {
+            color: 'danger',
+            title: 'Registration status unavailable',
+            description: 'Please try again later.',
+          },
+        }}
+        to={redirectTo}
+      />
+    );
   }
 
   if (!open) {
-    return <Navigate replace state={{ from: location }} to={redirectTo} />;
+    return (
+      <Navigate
+        replace
+        state={{
+          from: location,
+          toast: {
+            color: 'warning',
+            title: 'Registration is closed',
+            description:
+              'The registration period has passed and no new registrations will be accepted.',
+          },
+        }}
+        to={redirectTo}
+      />
+    );
   }
 
   return <>{children}</>;
