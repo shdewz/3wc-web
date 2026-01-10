@@ -20,7 +20,7 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <HeroUIProvider locale="en-GB" navigate={navigate} useHref={useHref}>
-      <ToastProvider />
+      <ToastProvider toastOffset={20} />
       <RouteToast />
 
       <TournamentStatusProvider>
