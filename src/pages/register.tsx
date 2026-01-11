@@ -5,9 +5,12 @@ import Cookies from 'js-cookie';
 import { UserCard } from '@components/common/user-card';
 import { ConfirmActionButton } from '@components/common/confirm-button';
 import { useAuth } from '@context/auth-context';
+import { DiscordLinkAction } from '@components/account/discord-unlink-action';
+import { useNavigate } from 'react-router-dom';
 
 export const RegisterPage = () => {
   const { user, refresh } = useAuth();
+  const navigate = useNavigate();
 
   const [wantsCaptain, setWantsCaptain] = useState(
     user?.wants_captain ?? false
@@ -19,36 +22,7 @@ export const RegisterPage = () => {
 
   const discordLinked = Boolean(user?.discord_id);
   const canSubmit = Boolean(user) && readRules && discordLinked;
-
-  const startDiscordLink = () => {
-    const returnTo = window.location.href;
-
-    window.location.assign(
-      `/api/auth/discord/login?returnTo=${encodeURIComponent(returnTo)}`
-    );
-  };
-
   const csrf = Cookies.get('csrf_token') ?? '';
-
-  const unlinkDiscord = async () => {
-    const csrf = Cookies.get('csrf_token') ?? '';
-    const resp = await fetch('/api/auth/discord/unlink', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': csrf,
-      },
-    });
-
-    if (!resp.ok) {
-      const text = await resp.text().catch(() => 'Unknown error');
-
-      throw new Error(text);
-    }
-
-    await refresh();
-  };
 
   const unregister = async () => {
     const csrf = Cookies.get('csrf_token') ?? '';
@@ -68,10 +42,11 @@ export const RegisterPage = () => {
     }
 
     await refresh();
+    navigate('/', { replace: true });
   };
 
   return (
-    <section className="flex flex-col items-start justify-center gap-4 pb-8 sm:py-8 max-w-2xl">
+    <section className="flex flex-col items-start justify-center gap-4 pb-8 sm:py-8 w-2xl">
       <div className="inline-block w-full text-left justify-center">
         {user?.registered ? (
           <>
@@ -97,40 +72,7 @@ export const RegisterPage = () => {
                 username: user?.discord_username ?? null,
                 avatar: user?.discord_avatar_url ?? null,
               }}
-              discordAction={
-                user?.discord_id ? (
-                  <ConfirmActionButton
-                    color="default"
-                    confirmColor="danger"
-                    confirmText="Unlink"
-                    description={
-                      <>
-                        This will unlink your Discord account from your profile.
-                        <br />
-                        <span className="text-sm text-default-500">
-                          If you linked the wrong account, you can relink again
-                          with a different account.
-                        </span>
-                      </>
-                    }
-                    size="sm"
-                    title="Unlink Discord account?"
-                    variant="flat"
-                    onConfirm={unlinkDiscord}
-                  >
-                    Unlink
-                  </ConfirmActionButton>
-                ) : (
-                  <Button
-                    size="sm"
-                    type="button"
-                    variant="flat"
-                    onPress={startDiscordLink}
-                  >
-                    Link
-                  </Button>
-                )
-              }
+              discordAction={<DiscordLinkAction />}
               locale="en"
               osu={{
                 user_id: user?.user_id,
