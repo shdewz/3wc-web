@@ -134,6 +134,7 @@ export const UserCard: React.FC<Props> = ({
               </p>
             </div>
           }
+          delay={200}
           placement="top-end"
         >
           <Button

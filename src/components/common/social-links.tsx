@@ -44,7 +44,13 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
   return (
     <div className={clsx('flex items-center', `gap-${gap}`, className)}>
       {entries.map(([key, href]) => (
-        <Tooltip key={key} showArrow content={LABELS[key]} placement="bottom">
+        <Tooltip
+          key={key}
+          showArrow
+          content={LABELS[key]}
+          delay={200}
+          placement="bottom"
+        >
           <Button
             isIconOnly
             aria-label={LABELS[key]}

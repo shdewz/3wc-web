@@ -85,8 +85,8 @@ export const RulesPage = () => {
     return (
       <Tooltip
         showArrow
-        closeDelay={50}
         content={allSelected ? 'Collapse all' : 'Expand all'}
+        delay={200}
       >
         <Button
           isIconOnly
