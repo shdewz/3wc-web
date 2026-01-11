@@ -41,7 +41,7 @@ export const NavbarMenu: React.FC<NavbarMenuProps> = ({ onClose }) => {
 
   return (
     <HeroUINavbarMenu>
-      <div className="flex flex-col h-full gap-4 pb-4">
+      <div className="flex flex-col h-full gap-4 pb-[calc(env(safe-area-inset-bottom)+1rem)]">
         {user ? (
           <Card className="p-4 flex flex-row gap-4">
             <Avatar
