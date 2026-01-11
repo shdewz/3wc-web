@@ -18,6 +18,14 @@ export const Footer = () => {
         >
           Source Code
         </Link>
+        <Link
+          isExternal
+          className="text-xs font-bold"
+          color="foreground"
+          href="https://3wc.betteruptime.com"
+        >
+          Status
+        </Link>
       </div>
       <div className="flex items-center justify-center">
         <span className="text-default-600">© 2026 shdewz</span>
