@@ -5,8 +5,8 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from '@heroui/react';
-import { LogOutIcon } from '@components/icons';
 import { useAuth } from '@context/auth-context';
+import { LogOutIcon, UserSettingsIcon } from '@components/icons';
 
 export const NavbarAvatar = () => {
   const { user, logout } = useAuth();
@@ -33,9 +33,13 @@ export const NavbarAvatar = () => {
           <p className="text-default-600 italic text-xs">Signed in as</p>
           <p className="font-semibold">{user?.username ?? 'Unknown'}</p>
         </DropdownItem>
-        {/* <DropdownItem key="settings" startContent={<UserSettingsIcon />}>
+        <DropdownItem
+          key="settings"
+          href="/account/settings"
+          startContent={<UserSettingsIcon />}
+        >
           Settings
-        </DropdownItem> */}
+        </DropdownItem>
         <DropdownItem
           key="logout"
           className="text-danger"
