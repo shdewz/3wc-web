@@ -2,6 +2,7 @@ import { IndexPage } from '@pages/index';
 import { RegisterPage } from '@pages/register';
 import { RulesPage } from '@pages/rules';
 import { RegisterSuccessPage } from '@pages/register-success';
+import { SettingsPage } from '@pages/settings';
 
 interface RouteConfig {
   path: string;
@@ -25,6 +26,11 @@ export const routes: RouteConfig[] = [
     path: '/rules',
     page: <RulesPage />,
     title: 'Rules',
+  },
+  {
+    path: '/account/settings',
+    page: <SettingsPage />,
+    title: 'Account Settings',
   },
   {
     path: '/register',
