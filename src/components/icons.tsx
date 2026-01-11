@@ -1,15 +1,34 @@
-import { FC } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FC, forwardRef } from 'react';
+import {
+  FontAwesomeIcon,
+  FontAwesomeIconProps,
+} from '@fortawesome/react-fontawesome';
 import {
   faMagnifyingGlass,
   faSquareMinus,
   faSquarePlus,
   faRightFromBracket,
   faUserGear,
+  faCircleInfo,
+  IconDefinition,
+  faLink,
+  faLinkSlash,
 } from '@fortawesome/free-solid-svg-icons';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 import { IconSvgProps } from '@/types';
+
+export const makeFaIcon = (def: IconDefinition) => {
+  const comp = forwardRef<SVGSVGElement, Omit<FontAwesomeIconProps, 'icon'>>(
+    function FAIcon(props, ref) {
+      return <FontAwesomeIcon ref={ref} icon={def} {...props} />;
+    }
+  );
+
+  comp.displayName = `FAIcon(${def.iconName})`;
+
+  return comp;
+};
 
 export const Logo: FC<IconSvgProps> = ({
   size = 28,
@@ -52,9 +71,12 @@ export const Logo: FC<IconSvgProps> = ({
   );
 };
 
-export const SearchIcon = () => <FontAwesomeIcon icon={faMagnifyingGlass} />;
-export const ExpandAllIcon = () => <FontAwesomeIcon icon={faSquarePlus} />;
-export const CollapseAllIcon = () => <FontAwesomeIcon icon={faSquareMinus} />;
-export const LogOutIcon = () => <FontAwesomeIcon icon={faRightFromBracket} />;
-export const UserSettingsIcon = () => <FontAwesomeIcon icon={faUserGear} />;
-export const DiscordIcon = () => <FontAwesomeIcon icon={faDiscord} />;
+export const SearchIcon = makeFaIcon(faMagnifyingGlass);
+export const ExpandAllIcon = makeFaIcon(faSquarePlus);
+export const CollapseAllIcon = makeFaIcon(faSquareMinus);
+export const LogOutIcon = makeFaIcon(faRightFromBracket);
+export const UserSettingsIcon = makeFaIcon(faUserGear);
+export const DiscordIcon = makeFaIcon(faDiscord);
+export const InfoIcon = makeFaIcon(faCircleInfo);
+export const LinkIcon = makeFaIcon(faLink);
+export const UnlinkIcon = makeFaIcon(faLinkSlash);
