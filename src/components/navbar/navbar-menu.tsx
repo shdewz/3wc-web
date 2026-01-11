@@ -41,7 +41,7 @@ export const NavbarMenu: React.FC<NavbarMenuProps> = ({ onClose }) => {
 
   return (
     <HeroUINavbarMenu>
-      <div className="flex flex-col h-full gap-4 pb-[calc(env(safe-area-inset-bottom)+1rem)]">
+      <div className="flex min-h-full flex-col gap-4 p-4">
         {user ? (
           <Card className="p-4 flex flex-row gap-4">
             <Avatar
@@ -66,7 +66,9 @@ export const NavbarMenu: React.FC<NavbarMenuProps> = ({ onClose }) => {
         ) : (
           <LoginButton />
         )}
+
         <Divider />
+
         {navItems.map((item, index) => (
           <NavbarMenuItem key={`${item.label}-${index}`}>
             <Link
@@ -80,7 +82,9 @@ export const NavbarMenu: React.FC<NavbarMenuProps> = ({ onClose }) => {
           </NavbarMenuItem>
         ))}
 
-        <div className="mt-auto flex justify-center pt-2">
+        <Divider />
+
+        <div className="flex justify-center">
           <SocialLinks gap={4} size="md" />
         </div>
       </div>
