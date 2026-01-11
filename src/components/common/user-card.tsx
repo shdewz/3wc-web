@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import { Card, Divider, Avatar, Chip } from '@heroui/react';
+import { Card, Divider, Avatar, Chip, Tooltip, Button } from '@heroui/react';
 import { Flag } from '@components/common/flag';
-import { DiscordIcon } from '@components/icons';
+import { DiscordIcon, InfoIcon } from '@components/icons';
 
 type OsuInfo = {
   user_id?: string | number | null;
@@ -121,6 +121,32 @@ export const UserCard: React.FC<Props> = ({
           <Flag countryCode={osu?.country_code ?? undefined} size={1.25} />
           <span>{countryName ?? osu?.country_code ?? 'Unknown'}</span>
         </div>
+
+        <Tooltip
+          showArrow
+          content={
+            <div className="max-w-xs p-3">
+              <p className="font-medium">What determines my country?</p>
+              <p className="text-sm text-default-600 mt-1">
+                The flag on your osu! profile will be used to assign you to a
+                team. There will be no exceptions to this, excluding potential
+                country merges.
+              </p>
+            </div>
+          }
+          placement="top-end"
+        >
+          <Button
+            isIconOnly
+            aria-label="About country grouping"
+            className="text-default-500 shrink-0"
+            radius="full"
+            size="sm"
+            variant="light"
+          >
+            <InfoIcon className="text-large" />
+          </Button>
+        </Tooltip>
       </div>
     </Card>
   );
