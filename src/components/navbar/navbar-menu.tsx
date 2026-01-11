@@ -14,6 +14,7 @@ import { useAuth } from '@context/auth-context';
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRegistrationWindow } from '@hooks/use-registration-window';
+import { SocialLinks } from '@components/common/social-links';
 
 type NavbarMenuProps = {
   onClose: () => void;
@@ -40,43 +41,49 @@ export const NavbarMenu: React.FC<NavbarMenuProps> = ({ onClose }) => {
 
   return (
     <HeroUINavbarMenu>
-      {user ? (
-        <Card className="p-4 flex flex-row gap-4">
-          <Avatar
-            isBordered
-            showFallback
-            className="transition-transform"
-            color="default"
-            name={user?.username ?? undefined}
-            size="md"
-            src={user?.avatar_url}
-          />
-          <div className="flex items-center justify-between grow">
-            <div className="flex flex-col">
-              <p className="text-default-600 italic text-xs">Signed in as</p>
-              <p className="font-semibold">{user?.username ?? 'Unknown'}</p>
+      <div className="flex flex-col h-full gap-4 pb-4">
+        {user ? (
+          <Card className="p-4 flex flex-row gap-4">
+            <Avatar
+              isBordered
+              showFallback
+              className="transition-transform"
+              color="default"
+              name={user?.username ?? undefined}
+              size="md"
+              src={user?.avatar_url}
+            />
+            <div className="flex items-center justify-between grow">
+              <div className="flex flex-col">
+                <p className="text-default-600 italic text-xs">Signed in as</p>
+                <p className="font-semibold">{user?.username ?? 'Unknown'}</p>
+              </div>
+              <Button isIconOnly color="danger" variant="flat" onPress={logout}>
+                <LogOutIcon />
+              </Button>
             </div>
-            <Button isIconOnly color="danger" variant="flat" onPress={logout}>
-              <LogOutIcon />
-            </Button>
-          </div>
-        </Card>
-      ) : (
-        <LoginButton />
-      )}
-      <Divider />
-      {navItems.map((item, index) => (
-        <NavbarMenuItem key={`${item.label}-${index}`}>
-          <Link
-            className="w-full"
-            color="foreground"
-            size="lg"
-            onPress={() => handleNavigate(item.href)}
-          >
-            {item.label}
-          </Link>
-        </NavbarMenuItem>
-      ))}
+          </Card>
+        ) : (
+          <LoginButton />
+        )}
+        <Divider />
+        {navItems.map((item, index) => (
+          <NavbarMenuItem key={`${item.label}-${index}`}>
+            <Link
+              className="w-full"
+              color="foreground"
+              size="lg"
+              onPress={() => handleNavigate(item.href)}
+            >
+              {item.label}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+
+        <div className="mt-auto flex justify-center pt-2">
+          <SocialLinks gap={4} size="md" />
+        </div>
+      </div>
     </HeroUINavbarMenu>
   );
 };

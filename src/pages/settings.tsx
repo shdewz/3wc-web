@@ -138,7 +138,7 @@ export const SettingsPage = () => {
             </div>
 
             <Button as={Link} to="/register" variant="flat">
-              {user.registered ? 'Modify registration' : 'Go to registration'}
+              {user.registered ? 'Modify registration' : 'Register'}
             </Button>
           </div>
         </Card>

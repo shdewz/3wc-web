@@ -32,4 +32,9 @@ export const siteConfig = {
   description: '',
   navItems,
   navMenuItems,
+  socials: {
+    discord: 'https://discord.gg/ZjPs7ya',
+    twitch: 'https://www.twitch.tv/3wc_osu',
+    youtube: 'https://www.youtube.com/@3wc_osu',
+  },
 };

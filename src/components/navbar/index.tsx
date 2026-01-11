@@ -13,6 +13,7 @@ import { NavbarAvatar } from '@components/navbar/navbar-avatar';
 import { LoginButton } from '@components/navbar/navbar-login-button';
 import { useAuth } from '@context/auth-context';
 import { useRegistrationWindow } from '@hooks/use-registration-window';
+import { SocialLinks } from '@components/common/social-links';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,7 +66,8 @@ export const Navbar = () => {
         ))}
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex" justify="end">
+      <NavbarContent className="hidden sm:flex items-center" justify="end">
+        <SocialLinks className="mr-2" gap={2} size="sm" />
         {user?.user_id ? <NavbarAvatar /> : <LoginButton />}
       </NavbarContent>
 

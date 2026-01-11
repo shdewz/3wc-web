@@ -14,7 +14,11 @@ import {
   faLink,
   faLinkSlash,
 } from '@fortawesome/free-solid-svg-icons';
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import {
+  faDiscord,
+  faTwitch,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
 
 import { IconSvgProps } from '@/types';
 
@@ -77,6 +81,8 @@ export const CollapseAllIcon = makeFaIcon(faSquareMinus);
 export const LogOutIcon = makeFaIcon(faRightFromBracket);
 export const UserSettingsIcon = makeFaIcon(faUserGear);
 export const DiscordIcon = makeFaIcon(faDiscord);
+export const YouTubeIcon = makeFaIcon(faYoutube);
+export const TwitchIcon = makeFaIcon(faTwitch);
 export const InfoIcon = makeFaIcon(faCircleInfo);
 export const LinkIcon = makeFaIcon(faLink);
 export const UnlinkIcon = makeFaIcon(faLinkSlash);
