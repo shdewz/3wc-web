@@ -12,11 +12,10 @@ export const RequireRegistrationOpen: React.FC<Props> = ({
   children,
   redirectTo = '/',
 }) => {
-  const { initializing, loading, error, open, msUntilStart } =
-    useRegistrationWindow();
+  const { initializing, error, open, msUntilStart } = useRegistrationWindow();
   const location = useLocation();
 
-  if (initializing || loading) return null;
+  if (initializing) return null;
 
   if (error) {
     return (
