@@ -22,6 +22,7 @@ export interface ConfirmActionButtonProps {
 
   title: string;
   description?: React.ReactNode;
+  startContent?: React.ReactNode;
 
   confirmText?: string;
   confirmColor?: React.ComponentProps<typeof Button>['color'];
@@ -43,6 +44,7 @@ export const ConfirmActionButton: React.FC<ConfirmActionButtonProps> = ({
 
   title,
   description,
+  startContent,
 
   confirmText = 'Confirm',
   confirmColor = 'danger',
@@ -81,6 +83,7 @@ export const ConfirmActionButton: React.FC<ConfirmActionButtonProps> = ({
         color={color}
         isDisabled={isDisabled}
         size={size}
+        startContent={startContent}
         variant={variant}
         onPress={onOpen}
       >
