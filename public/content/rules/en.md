@@ -62,12 +62,15 @@ The tournament organisers reserve the right to modify the rules at any moment as
    - Captains are expected to choose team members with honesty and good will, with the aim of fielding the strongest team possible.
    - Captains **MUST** submit their finalised team list before the deadline. Teams that fail to send a finalised team list before the deadline will be disqualified.
    - Captains are allowed to exclude themselves from the team list.
-   - Captains are encouraged to, should there be more than 6 signups for their country, conduct and coordinate "tryouts", tests to gauge player aptitude, on their own terms.
+   - Captains are encouraged to, should there be more than 6 registrations for their country, conduct and coordinate "tryouts", tests to gauge player aptitude, on their own terms.
    - Captains are allowed, at any time, to transfer their role to other prospective team members. Once given, only the new captain may assign the captaincy to another player.
    - Users responsible for organising their country's tryouts are encouraged to contact the tournament organisers to be elected as provisional captains for their team.
-3. To ensure valid registrations, every prospective participant will go through [tournament screening](https://osu.ppy.sh/wiki/Tournaments/Official_support#tournament-screening); violation of the [osu! community rules](https://osu.ppy.sh/wiki/Rules) within the previous 12 months or an active tournament ban may void a player's eligibility to participate.
+3. Should a country not have enough registrations to form a team (2 or less), they may be allowed to merge with another closely related country in order to supplement that.
+   - Relations may be historical, political, or geographical.
+   - All merges will be reviewed on a case-by-case basis by the tournament organisers.
+4. To ensure valid registrations, every prospective participant will go through [tournament screening](https://osu.ppy.sh/wiki/Tournaments/Official_support#tournament-screening); violation of the [osu! community rules](https://osu.ppy.sh/wiki/Rules) within the previous 12 months or an active tournament ban may void a player's eligibility to participate.
    - Individuals who are unhappy with the results of screening should contact [accounts@ppy.sh](mailto:accounts@ppy.sh) to request more information about their case.
-4. Tournament staff members are not allowed to play in the tournament, with the exception of commentators, streamers, and designers.
+5. Tournament staff members are not allowed to play in the tournament, with the exception of commentators, streamers, and designers.
    - The tournament organisers must ensure that such staff members do not have access to any privileged data, e.g. qualifier score information, or mappool information before the mappool showcase.
 
 ## 5. Qualifier instructions
