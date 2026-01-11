@@ -58,13 +58,17 @@ export const SettingsPage = () => {
 
   if (!user) {
     return (
-      <section className="flex flex-col gap-4 py-8 max-w-2xl">
+      <section className="flex flex-col gap-4 py-8 w-2xl">
         <span className={title()}>User Settings</span>
-        <Card className="p-4">
+        <Card className="p-4 w-full">
           <Alert title="You are not logged in." variant="flat" />
           <div className="mt-4">
-            <Button color="primary" onPress={() => login(window.location.href)}>
-              Sign in with osu!
+            <Button
+              className="w-full"
+              color="primary"
+              onPress={() => login(window.location.href)}
+            >
+              Log in with osu!
             </Button>
           </div>
         </Card>
