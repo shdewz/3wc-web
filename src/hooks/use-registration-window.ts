@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { formatMonthDay } from '@utils/date-format';
 import { useTournamentStatus } from '@context/tournament-status-context';
+import { formatMonthDay } from '@utils/time';
 
 export type RegistrationWindowState = ReturnType<typeof useRegistrationWindow>;
 
