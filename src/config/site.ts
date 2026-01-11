@@ -21,7 +21,11 @@ const navItems: NavItem[] = [
   },
 ];
 
-const navMenuItems: NavItem[] = [{ label: 'Home', href: '/' }, ...navItems];
+const navMenuItems: NavItem[] = [
+  { label: 'Home', href: '/' },
+  ...navItems,
+  { label: 'Settings', href: '/account/settings' },
+];
 
 export const siteConfig = {
   name: '3 Digit World Cup',
