@@ -1,5 +1,14 @@
 import React, { useMemo } from 'react';
-import { Card, Divider, Avatar, Chip, Tooltip, Button } from '@heroui/react';
+import {
+  Card,
+  Divider,
+  Avatar,
+  Chip,
+  Button,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from '@heroui/react';
 import { Flag } from '@components/common/flag';
 import { DiscordIcon, InfoIcon } from '@components/icons';
 
@@ -122,9 +131,20 @@ export const UserCard: React.FC<Props> = ({
           <span>{countryName ?? osu?.country_code ?? 'Unknown'}</span>
         </div>
 
-        <Tooltip
-          showArrow
-          content={
+        <Popover color="default" placement="top-end">
+          <PopoverTrigger>
+            <Button
+              isIconOnly
+              aria-label="About country grouping"
+              className="text-default-500 shrink-0"
+              radius="full"
+              size="sm"
+              variant="light"
+            >
+              <InfoIcon className="text-large" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent>
             <div className="max-w-xs p-3">
               <p className="font-medium">What determines my country?</p>
               <p className="text-sm text-default-600 mt-1">
@@ -133,21 +153,8 @@ export const UserCard: React.FC<Props> = ({
                 country merges.
               </p>
             </div>
-          }
-          delay={200}
-          placement="top-end"
-        >
-          <Button
-            isIconOnly
-            aria-label="About country grouping"
-            className="text-default-500 shrink-0"
-            radius="full"
-            size="sm"
-            variant="light"
-          >
-            <InfoIcon className="text-large" />
-          </Button>
-        </Tooltip>
+          </PopoverContent>
+        </Popover>
       </div>
     </Card>
   );
