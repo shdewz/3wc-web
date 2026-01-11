@@ -14,6 +14,7 @@ import { MarkdownText } from '@components/common/markdown-text';
 import { SearchInput } from '@components/common/search-input';
 import { splitMarkdown, MarkdownSection } from '@utils/split-markdown';
 import { parseFrontMatter } from '@utils/parse-front-matter';
+import { FullScreenLoader } from '@components/common/fullscreen-loader';
 
 export const RulesPage = () => {
   const [sections, setSections] = useState<MarkdownSection[]>([]);
@@ -99,7 +100,9 @@ export const RulesPage = () => {
     );
   };
 
-  return (
+  return sections.length === 0 ? (
+    <FullScreenLoader />
+  ) : (
     <section className="flex flex-col items-left justify-center gap-4 sm:py-8 w-full">
       <div className="inline-block w-full text-left justify-center">
         <h1 className={title()}>Rules</h1>
@@ -116,34 +119,28 @@ export const RulesPage = () => {
         )}
 
         <Card className="p-3 mt-6 w-full flex flex-col gap-3 items-center">
-          {sections.length > 0 && (
-            <div className="flex justify-between w-full gap-3">
-              <SearchInput onChange={handleSearch} />
-              <ToggleAllButton />
-            </div>
-          )}
-          {sections.length === 0 ? (
-            'Loading rules...'
-          ) : (
-            <Accordion
-              selectedKeys={selectedKeys}
-              selectionMode="multiple"
-              variant="shadow"
-              onSelectionChange={(keys) => {
-                if (keys === 'all') return;
-                setSelectedKeys(new Set([...keys].map(String)));
-              }}
-            >
-              {sections.map((section, index) => (
-                <AccordionItem key={index} title={section.title}>
-                  <MarkdownText
-                    content={section.content}
-                    searchQuery={debouncedQuery}
-                  />
-                </AccordionItem>
-              ))}
-            </Accordion>
-          )}
+          <div className="flex justify-between w-full gap-3">
+            <SearchInput onChange={handleSearch} />
+            <ToggleAllButton />
+          </div>
+          <Accordion
+            selectedKeys={selectedKeys}
+            selectionMode="multiple"
+            variant="shadow"
+            onSelectionChange={(keys) => {
+              if (keys === 'all') return;
+              setSelectedKeys(new Set([...keys].map(String)));
+            }}
+          >
+            {sections.map((section, index) => (
+              <AccordionItem key={index} title={section.title}>
+                <MarkdownText
+                  content={section.content}
+                  searchQuery={debouncedQuery}
+                />
+              </AccordionItem>
+            ))}
+          </Accordion>
           <Link
             isExternal
             showAnchorIcon
