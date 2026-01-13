@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHref, useNavigate, type NavigateOptions } from 'react-router-dom';
-import { HeroUIProvider } from '@heroui/system';
+import { HeroUIProvider } from '@heroui/react';
 import { LoadingGate } from '@components/common/loading-gate';
 import { AuthProvider } from '@context/auth-context';
 import { TournamentStatusProvider } from '@context/tournament-status-context';
