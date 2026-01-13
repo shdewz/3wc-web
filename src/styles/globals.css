@@ -15,3 +15,11 @@
       'Liberation Mono', 'Courier New', monospace;
   }
 }
+
+.table-rounded-striped tbody tr:nth-child(odd) td:first-child {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.table-rounded-striped tbody tr:nth-child(odd) td:last-child {
+  border-radius: 0 0.5rem 0.5rem 0;
+}

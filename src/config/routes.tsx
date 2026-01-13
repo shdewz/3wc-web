@@ -3,6 +3,7 @@ import { RegisterPage } from '@pages/register';
 import { RulesPage } from '@pages/rules';
 import { RegisterSuccessPage } from '@pages/register-success';
 import { SettingsPage } from '@pages/settings';
+import { TeamsPage } from '@pages/teams';
 
 interface RouteConfig {
   path: string;
@@ -30,6 +31,11 @@ export const routes: RouteConfig[] = [
   {
     path: '/account/settings',
     page: <SettingsPage />,
+    title: 'Account Settings',
+  },
+  {
+    path: '/teams',
+    page: <TeamsPage />,
     title: 'Account Settings',
   },
   {

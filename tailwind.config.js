@@ -275,7 +275,7 @@ export default {
               foreground: '#fff',
             },
             content2: {
-              DEFAULT: '#27272a',
+              DEFAULT: '#212124',
               foreground: '#fff',
             },
             content3: {
