@@ -1,6 +1,6 @@
 ---
 language: en
-last_update: 2026-01-09T20:00:00Z
+last_update: 2026-01-15T20:00:00Z
 ---
 
 # Rules
@@ -132,8 +132,8 @@ The tournament organisers reserve the right to modify the rules at any moment as
 2. Each mappool will consist of 5 brackets: [No Mod](https://osu.ppy.sh/wiki/en/Gameplay/Game_modifier#no-mod), [Hidden](https://osu.ppy.sh/wiki/en/Gameplay/Game_modifier/Hidden), [Hard Rock](https://osu.ppy.sh/wiki/en/Gameplay/Game_modifier/Hard_Rock), [Double Time](https://osu.ppy.sh/wiki/en/Gameplay/Game_modifier/Double_Time), and [Free Mod](https://osu.ppy.sh/wiki/en/Gameplay/Game_modifier#free-mod).
 3. The mappool sizes are as follows:
    - Qualifiers: 10 beatmaps
-   - Group stage and Round of 16: 15 beatmaps
-   - Quarterfinals, Semifinals, Finals, and Grand Finals: 20 beatmaps
+   - Round of 16 and Quarterfinals: 15 beatmaps
+   - Semifinals, Finals, and Grand Finals: 20 beatmaps
 4. The Hidden, Hard Rock, and Double Time brackets will be played with the respective mods enabled for all players.
 5. The Free Mod bracket will have "Free Mods" enabled, that is, players will be able to select what mods they use.
    - Possible mod choices are Hidden, Hard Rock, Easy, and any valid combination of the aforementioned mods.
