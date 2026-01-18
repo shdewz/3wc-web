@@ -36,7 +36,7 @@ export const routes: RouteConfig[] = [
   {
     path: '/teams',
     page: <TeamsPage />,
-    title: 'Account Settings',
+    title: 'Teams',
   },
   {
     path: '/register',
