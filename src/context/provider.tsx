@@ -23,6 +23,7 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
     (path: string, options?: NavigateOptions) => {
       if (path.startsWith('http://') || path.startsWith('https://')) {
         window.location.href = path;
+
         return;
       }
       navigate(path, options);
@@ -35,6 +36,7 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
       if (to.startsWith('http://') || to.startsWith('https://')) {
         return to;
       }
+
       return routerUseHref(to);
     },
     [routerUseHref]
