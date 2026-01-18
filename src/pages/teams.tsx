@@ -26,6 +26,11 @@ export const TeamsPage = () => {
       allowSorting: true,
     },
     {
+      key: 'discord_username',
+      label: 'Discord username',
+      allowSorting: true,
+    },
+    {
       key: 'country_code',
       label: 'Country',
       allowSorting: true,
@@ -90,6 +95,8 @@ export const TeamsPage = () => {
               </Link>
             </div>
           );
+        case 'discord_username':
+          return `@${value ?? 'N/A'}`;
         case 'country_code':
           return <CountryDisplay countryCode={value} />;
         case 'global_rank':
@@ -127,7 +134,7 @@ export const TeamsPage = () => {
                     <SortableTable
                       columns={columns}
                       defaultSortDescriptor={{
-                        column: 'username',
+                        column: 'global_rank',
                         direction: 'ascending',
                       }}
                       getRowKey={(p) => `${p.user_id}`}
@@ -139,9 +146,6 @@ export const TeamsPage = () => {
                   )}
                 </>
               )}
-            </Tab>
-            <Tab key="by_country" title="By Country">
-              {tabContent('Registrations by Country', '')}
             </Tab>
           </Tabs>
         </div>
