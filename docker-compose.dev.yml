@@ -10,7 +10,5 @@ services:
       - .:/app
     environment:
       NODE_ENV: development
-      CHOKIDAR_USEPOLLING: 'true'
-      CHOKIDAR_INTERVAL: '200'
     extra_hosts:
       - 'host.docker.internal:host-gateway'
