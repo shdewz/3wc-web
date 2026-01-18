@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useHref, useNavigate, type NavigateOptions } from 'react-router-dom';
 import { HeroUIProvider } from '@heroui/react';
 import { LoadingGate } from '@components/common/loading-gate';
@@ -17,9 +17,35 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const navigate = useNavigate();
+  const routerUseHref = useHref;
+
+  const customNavigate = useCallback(
+    (path: string, options?: NavigateOptions) => {
+      if (path.startsWith('http://') || path.startsWith('https://')) {
+        window.location.href = path;
+        return;
+      }
+      navigate(path, options);
+    },
+    [navigate]
+  );
+
+  const customUseHref = useCallback(
+    (to: string) => {
+      if (to.startsWith('http://') || to.startsWith('https://')) {
+        return to;
+      }
+      return routerUseHref(to);
+    },
+    [routerUseHref]
+  );
 
   return (
-    <HeroUIProvider locale="en-GB" navigate={navigate} useHref={useHref}>
+    <HeroUIProvider
+      locale="en-GB"
+      navigate={customNavigate}
+      useHref={customUseHref}
+    >
       <ToastProvider toastOffset={20} />
       <RouteToast />
 
