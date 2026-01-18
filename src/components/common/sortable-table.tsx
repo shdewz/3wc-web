@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import {
   Table,
   TableHeader,
@@ -9,7 +9,8 @@ import {
   Spinner,
   getKeyValue,
 } from '@heroui/react';
-import { useAsyncList } from '@react-stately/data';
+import type { SortDescriptor } from '@react-types/shared';
+import { useSortableData } from '@hooks/use-sortable-data';
 
 export type Column<T> = {
   key: Extract<keyof T, string | number>;
@@ -23,7 +24,7 @@ type SortableTableProps<T extends Record<string, any>> = {
   columns: Column<T>[];
   isLoading?: boolean;
   emptyContent?: React.ReactNode;
-  defaultSortDescriptor?: any;
+  defaultSortDescriptor?: SortDescriptor;
   getRowKey?: (item: T, index: number) => string | number;
   renderCell?: (
     item: T,
@@ -43,68 +44,11 @@ export const SortableTable = <T extends Record<string, any>>({
   renderCell: customRenderCell,
   numericKeys = [] as (keyof T)[],
 }: SortableTableProps<T>) => {
-  const list = useAsyncList<T>({
-    async load() {
-      return { items: items ?? [] };
-    },
-    async sort({ items, sortDescriptor }) {
-      const { column, direction } = sortDescriptor;
-
-      if (!column) return { items };
-      const col = column as keyof T;
-
-      const sorted = [...items].sort((a, b) => {
-        const first = a[col];
-        const second = b[col];
-
-        // sort unknown/empty last
-        const isUnknownA =
-          first === null ||
-          first === undefined ||
-          first === '' ||
-          first === 'unknown';
-        const isUnknownB =
-          second === null ||
-          second === undefined ||
-          second === '' ||
-          second === 'unknown';
-
-        if (isUnknownA && !isUnknownB) return 1;
-        if (!isUnknownA && isUnknownB) return -1;
-        if (isUnknownA && isUnknownB) return 0;
-
-        const isNumeric = numericKeys.includes(col);
-
-        if (isNumeric) {
-          const aNum = Number(first);
-          const bNum = Number(second);
-          const cmp = aNum === bNum ? 0 : aNum < bNum ? -1 : 1;
-
-          return direction === 'descending' ? -cmp : cmp;
-        }
-
-        const cmp = String(first).localeCompare(String(second), undefined, {
-          numeric: true,
-          sensitivity: 'base',
-        });
-
-        return direction === 'descending' ? -cmp : cmp;
-      });
-
-      return { items: sorted };
-    },
+  const { sortedItems, sortDescriptor, onSortChange } = useSortableData({
+    items,
+    defaultSortDescriptor,
+    numericKeys,
   });
-
-  useEffect(() => {
-    list.setSelectedKeys('all');
-    list.setSelectedKeys(new Set());
-    list.setFilterText('');
-    list.reload();
-
-    if (defaultSortDescriptor) {
-      list.sort(defaultSortDescriptor);
-    }
-  }, [JSON.stringify(items)]);
 
   const renderCell = useCallback(
     (item: T, columnKey: Extract<keyof T, string | number>) => {
@@ -127,8 +71,8 @@ export const SortableTable = <T extends Record<string, any>>({
       classNames={{
         tbody: '[&_tr:nth-child(odd)_td]:bg-content2',
       }}
-      sortDescriptor={list.sortDescriptor}
-      onSortChange={list.sort}
+      sortDescriptor={sortDescriptor}
+      onSortChange={onSortChange}
     >
       <TableHeader columns={columns}>
         {(column) => (
@@ -145,7 +89,7 @@ export const SortableTable = <T extends Record<string, any>>({
       <TableBody
         emptyContent={emptyContent}
         isLoading={isLoading}
-        items={list.items}
+        items={sortedItems}
         loadingContent={<Spinner label="Loading..." />}
       >
         {(item) => (

@@ -41,7 +41,7 @@ export const TeamsPage = () => {
   useEffect(() => {
     const fetchRegistrations = async () => {
       try {
-        const response = await fetch('/api/registrations?onlyValid=true');
+        const response = await fetch('/api/registrations');
 
         if (response.ok) {
           const data = await response.json();
