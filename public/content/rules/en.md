@@ -70,7 +70,8 @@ The tournament organisers reserve the right to modify the rules at any moment as
    - All merges will be reviewed on a case-by-case basis by the tournament organisers.
 4. To ensure valid registrations, every prospective participant will go through [tournament screening](https://osu.ppy.sh/wiki/Tournaments/Official_support#tournament-screening); violation of the [osu! community rules](https://osu.ppy.sh/wiki/Rules) within the previous 12 months or an active tournament ban may void a player's eligibility to participate.
    - Individuals who are unhappy with the results of screening should contact [accounts@ppy.sh](mailto:accounts@ppy.sh) to request more information about their case.
-5. Tournament staff members are not allowed to play in the tournament, with the exception of commentators, streamers, and designers.
+5. Registered users must be strictly in the rank range (#100–999) at the time of registrations closing.
+6. Tournament staff members are not allowed to play in the tournament, with the exception of commentators, streamers, and designers.
    - The tournament organisers must ensure that such staff members do not have access to any privileged data, e.g. qualifier score information, or mappool information before the mappool showcase.
 
 ## 5. Qualifier instructions
