@@ -12,12 +12,15 @@ const navItems: NavItem[] = [
   {
     label: 'Rules',
     href: '/rules',
-    visibleWhen: (s) => s.open === true,
   },
   {
     label: 'Register',
     href: '/register',
     visibleWhen: (s) => s.open === true,
+  },
+  {
+    label: 'Teams',
+    href: '/teams',
   },
 ];
 
