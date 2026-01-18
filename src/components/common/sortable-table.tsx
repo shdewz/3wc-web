@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   Table,
   TableHeader,
@@ -43,12 +43,8 @@ export const SortableTable = <T extends Record<string, any>>({
   renderCell: customRenderCell,
   numericKeys = [] as (keyof T)[],
 }: SortableTableProps<T>) => {
-  const [hydrated, setHydrated] = useState(false);
-
   const list = useAsyncList<T>({
     async load() {
-      setHydrated(true);
-
       return { items: items ?? [] };
     },
     async sort({ items, sortDescriptor }) {
@@ -104,13 +100,11 @@ export const SortableTable = <T extends Record<string, any>>({
     list.setSelectedKeys(new Set());
     list.setFilterText('');
     list.reload();
-  }, [JSON.stringify(items)]);
 
-  useEffect(() => {
-    if (defaultSortDescriptor && hydrated && !list.sortDescriptor?.column) {
+    if (defaultSortDescriptor) {
       list.sort(defaultSortDescriptor);
     }
-  }, [hydrated, defaultSortDescriptor]);
+  }, [JSON.stringify(items)]);
 
   const renderCell = useCallback(
     (item: T, columnKey: Extract<keyof T, string | number>) => {
