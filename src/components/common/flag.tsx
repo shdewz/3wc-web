@@ -30,7 +30,7 @@ export const Flag: React.FC<FlagProps> = ({
     verticalAlign: '-0.125em',
   };
 
-  const alt = decorative ? '' : `${cc} flag`;
+  const alt = decorative ? '' : `${cc}`;
 
   return (
     <picture className={className}>
