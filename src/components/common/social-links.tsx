@@ -1,6 +1,12 @@
 import React from 'react';
 import { Button, Tooltip, Link } from '@heroui/react';
-import { DiscordIcon, TwitchIcon, YouTubeIcon } from '@components/icons';
+import {
+  DiscordIcon,
+  OsuIcon,
+  SheetIcon,
+  TwitchIcon,
+  YouTubeIcon,
+} from '@components/icons';
 import clsx from 'clsx';
 import { siteConfig } from '@config/site';
 
@@ -13,6 +19,8 @@ type SocialLinksProps = {
 
 const DEFAULT_ORDER: (keyof typeof siteConfig.socials)[] = [
   'discord',
+  'forum_thread',
+  'spreadsheet',
   'twitch',
   'youtube',
 ];
@@ -21,12 +29,16 @@ const ICONS: Record<keyof typeof siteConfig.socials, React.ReactNode> = {
   discord: <DiscordIcon className="text-[18px]" />,
   twitch: <TwitchIcon className="text-[18px]" />,
   youtube: <YouTubeIcon className="text-[18px]" />,
+  forum_thread: <OsuIcon className="text-[18px]" size={22} />,
+  spreadsheet: <SheetIcon className="text-[18px]" />,
 };
 
 const LABELS: Record<keyof typeof siteConfig.socials, string> = {
   discord: 'Discord',
   twitch: 'Twitch',
   youtube: 'YouTube',
+  forum_thread: 'Forum Thread',
+  spreadsheet: 'Spreadsheet',
 };
 
 export const SocialLinks: React.FC<SocialLinksProps> = ({

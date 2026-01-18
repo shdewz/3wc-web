@@ -39,5 +39,8 @@ export const siteConfig = {
     discord: 'https://discord.gg/ZjPs7ya',
     twitch: 'https://www.twitch.tv/3wc_osu',
     youtube: 'https://www.youtube.com/@3wc_osu',
+    forum_thread: 'https://osu.ppy.sh/community/forums/topics/2169669?n=1',
+    spreadsheet:
+      'https://docs.google.com/spreadsheets/d/17tQOAKWcZsZwJaRJP-3JVEcQJP-16WfaSxVexhYVuDM',
   },
 };
